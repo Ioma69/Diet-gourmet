@@ -2,9 +2,10 @@
 
 
 {% block body %}
+{% if ( is_granted('ROLE_ADMIN') ) %}
 	<div class="container mt-5 rounded">
 		<div class="card shadow p-3 mb-5 mt-3 customForm">
-			<h2 class="text-center mb-4 titleForm">Créer un compte</h2>
+			<h2 class="text-center mb-4 titleForm">Créer un Patient</h2>
 			{{ form_start(form, {'attr': {'class': 'row g-3'}}) }}
 			<div class="col-md-12">
 				<div class="mb-3 form-group">
@@ -58,4 +59,5 @@
 			{{ form_end(form) }}
 		</div>
 	</div>
+	 {% endif %} 
 {% endblock %}
