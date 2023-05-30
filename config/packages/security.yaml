@@ -23,7 +23,12 @@ security:
             security: false
         main:
             lazy: true
-            provider: users_in_memory
+            form_login:
+                login_path: login
+                check_path: login
+            logout:
+                path: logout
+            provider: chain_provider
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
