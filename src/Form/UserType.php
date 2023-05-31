@@ -2,8 +2,12 @@
 
 namespace App\Form;
 
+use App\Entity\Allergen;
+use App\Entity\Diet;
 use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -105,7 +109,34 @@ class UserType extends AbstractType
                         new Regex(['pattern' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,}$/', 'message' => "Le mot de passe doit contenir au moins 8 caractères dont un numéro, une majuscule et un caractère spécial (!,@,#,$,%,^,&,*)"])
                     ]
                 ]
-            );
+            )
+
+            ->add('allergy', ChoiceType::class, [
+                'label' => "Types d'allergènes :",
+                'required' => false,
+                'choices' => [
+                    'Arachide' => 'allergene1',
+                    'Lactose' => 'allergene2',
+                  
+                ],
+                'multiple' => true,
+                'expanded' => true,
+                'mapped' => false
+            ])
+            
+            ->add('type', ChoiceType::class, [
+                'label' => 'Types de régimes :',
+                'required' => false,
+                'choices' => [
+                    'Régime végétalien' => 'regime1',
+                    'Régime végétarien' => 'regime2',
+                    
+                ],
+                'multiple' => true,
+                'expanded' => true,
+                'mapped' => false
+            ]);
+
 
 
     }

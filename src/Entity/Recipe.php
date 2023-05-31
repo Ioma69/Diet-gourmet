@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RecipeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RecipeRepository::class)]
@@ -33,6 +35,38 @@ class Recipe
 
     #[ORM\Column(length: 255)]
     private ?string $preparation = null;
+
+
+
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: "recipes")]
+    private Collection $users;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
+
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addRecipe($this);
+        }
+    
+        return $this;
+    }
+    
+    public function removeUser(User $user): self
+    {
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+            $user->removeRecipe($this);
+        }
+    
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -163,4 +197,5 @@ class Recipe
 
         return $this;
     }
+
 }

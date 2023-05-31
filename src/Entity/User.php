@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -45,10 +47,93 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private string $phone;
 
 
+    
+    #[ORM\ManyToMany(targetEntity: Recipe::class, inversedBy: "users")]
+    #[ORM\JoinTable(name: "user_recipes")]
+    private Collection $recipes;
+    
+    #[ORM\ManyToMany(targetEntity: Allergen::class, inversedBy: "users")]
+    #[ORM\JoinTable(name: "user_allergens")]
+    private Collection $allergens;
+    
+    #[ORM\ManyToMany(targetEntity: Diet::class, inversedBy: "users")]
+    #[ORM\JoinTable(name: "user_diets")]
+    private Collection $diets;
+   
+
+
     private $passwordHasher;
     public function __construct(UserPasswordHasherInterface $passwordHasher) {
         $this->passwordHasher = $passwordHasher;
+        $this->recipes = new ArrayCollection();
+        $this->allergens = new ArrayCollection();
+        $this->diets = new ArrayCollection();
     }
+
+
+
+    public function addRecipe(Recipe $recipe): self
+{
+    if (!$this->recipes->contains($recipe)) {
+        $this->recipes[] = $recipe;
+        $recipe->addUser($this);
+    }
+
+    return $this;
+}
+
+public function removeRecipe(Recipe $recipe): self
+{
+    if ($this->recipes->contains($recipe)) {
+        $this->recipes->removeElement($recipe);
+        $recipe->removeUser($this);
+    }
+
+    return $this;
+}
+
+
+public function addAllergen(Allergen $allergen): self
+{
+    if (!$this->allergens->contains($allergen)) {
+        $this->allergens[] = $allergen;
+        $allergen->addUser($this);
+    }
+
+    return $this;
+}
+
+public function removeAllergen(Allergen $allergen): self
+{
+    if ($this->allergens->contains($allergen)) {
+        $this->allergens->removeElement($allergen);
+        $allergen->removeUser($this);
+    }
+
+    return $this;
+}
+       
+public function addDiet(Diet $diet): self
+{
+    if (!$this->diets->contains($diet)) {
+        $this->diets[] = $diet;
+        $diet->addUser($this);
+    }
+
+    return $this;
+}
+
+public function removeDiet(Diet $diet): self
+{
+    if ($this->diets->contains($diet)) {
+        $this->diets->removeElement($diet);
+        $diet->removeUser($this);
+    }
+
+    return $this;
+}
+
+
 
     public function getId(): ?int
     {

@@ -9,16 +9,16 @@ use Doctrine\Persistence\ManagerRegistry;
 /**
  * @extends ServiceEntityRepository<Allergen>
  *
- * @method Allergens|null find($id, $lockMode = null, $lockVersion = null)
- * @method Allergens|null findOneBy(array $criteria, array $orderBy = null)
- * @method Allergens[]    findAll()
- * @method Allergens[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Allergen|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Allergen|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Allergen[]    findAll()
+ * @method Allergen[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AllergensRepository extends ServiceEntityRepository
+class AllergenRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Allergens::class);
+        parent::__construct($registry, Allergen::class);
     }
 
     public function save(Allergen $entity, bool $flush = false): void
@@ -40,7 +40,7 @@ class AllergensRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Allergens[] Returns an array of Allergens objects
+//     * @return Allergen[] Returns an array of Allergens objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class AllergensRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Allergens
+//    public function findOneBySomeField($value): ?Allergen
 //    {
 //        return $this->createQueryBuilder('a')
 //            ->andWhere('a.exampleField = :val')

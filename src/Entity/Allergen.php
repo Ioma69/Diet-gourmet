@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AllergenRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AllergenRepository::class)]
@@ -16,7 +18,33 @@ class Allergen
     #[ORM\Column]
     private ?array $allergy = null;
 
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: "allergens")]
+    private Collection $users;
 
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
+    public function addUser(User $user): self
+{
+    if (!$this->users->contains($user)) {
+        $this->users[] = $user;
+        $user->addAllergen($this);
+    }
+
+    return $this;
+}
+
+public function removeUser(User $user): self
+{
+    if ($this->users->contains($user)) {
+        $this->users->removeElement($user);
+        $user->removeAllergen($this);
+    }
+
+    return $this;
+}
 
 
     public function getId(): ?int
@@ -38,6 +66,25 @@ class Allergen
     public function setAllergy(?array $allergy): self
     {
         $this->allergy = $allergy;
+
+        return $this;
+    }
+
+
+    /**
+     * Get the value of users
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    /**
+     * Set the value of users
+     */
+    public function setUsers(Collection $users): self
+    {
+        $this->users = $users;
 
         return $this;
     }
