@@ -41,11 +41,62 @@ class Recipe
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: "recipes")]
     private Collection $users;
 
+    #[ORM\ManyToMany(targetEntity: Diet::class, inversedBy: 'recipes')]
+    private Collection $diets;
+
+    #[ORM\ManyToMany(targetEntity: Allergen::class, inversedBy: 'recipes')]
+    private Collection $allergens;
+
+  
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->diets = new ArrayCollection();
+        $this->allergens = new ArrayCollection();
     }
 
+
+    public function addAllergen(Allergen $allergen): self
+{
+    if (!$this->allergens->contains($allergen)) {
+        $this->allergens[] = $allergen;
+        $allergen->addRecipe($this);
+    }
+
+    return $this;
+}
+
+public function removeAllergen(Allergen $allergen): self
+{
+    if ($this->allergens->contains($allergen)) {
+        $this->allergens->removeElement($allergen);
+        $allergen->removeRecipe($this);
+    }
+
+    return $this;
+}
+    
+
+    public function addDiet(Diet $diet): self
+    {
+        if (!$this->diets->contains($diet)) {
+            $this->diets[] = $diet;
+            $diet->addRecipe($this);
+        }
+    
+        return $this;
+    }
+    
+    public function removeDiet(Diet $diet): self
+    {
+        if ($this->diets->contains($diet)) {
+            $this->diets->removeElement($diet);
+            $diet->removeRecipe($this);
+        }
+    
+        return $this;
+    }
 
     public function addUser(User $user): self
     {
@@ -198,4 +249,40 @@ class Recipe
         return $this;
     }
 
+
+    /**
+     * Get the value of allergens
+     */
+    public function getAllergens(): Collection
+    {
+        return $this->allergens;
+    }
+
+    /**
+     * Set the value of allergens
+     */
+    public function setAllergens(Collection $allergens): self
+    {
+        $this->allergens = $allergens;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of diets
+     */
+    public function getDiets(): Collection
+    {
+        return $this->diets;
+    }
+
+    /**
+     * Set the value of diets
+     */
+    public function setDiets(Collection $diets): self
+    {
+        $this->diets = $diets;
+
+        return $this;
+    }
 }

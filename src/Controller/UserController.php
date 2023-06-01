@@ -36,11 +36,11 @@ class UserController extends AbstractController
             $allergens = [];
             foreach ($allergenIds as $allergenId) {
                 $allergen = new Allergen();
-                // Configurez les propriétés de l'allergen si nécessaire
+            
                 $allergen->setAllergy([$allergenId]); // Convertir la chaîne en tableau
                 $entityManager->persist($allergen);
                 $allergens[] = $allergen;
-                dump($allergen);
+                
             }
 
             $diets = [];
@@ -49,7 +49,7 @@ class UserController extends AbstractController
                 $diet->setType([$dietId]); // Convertir la chaîne en tableau
                 $entityManager->persist($diet);
                 $diets[] = $diet;
-                dump($diet);
+               
             }
 
             // Associer les objets Allergen à l'utilisateur

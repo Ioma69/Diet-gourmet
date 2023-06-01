@@ -22,9 +22,13 @@ class Diet
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: "diets")]
     private Collection $users;
 
+    #[ORM\ManyToMany(targetEntity: Recipe::class, mappedBy: 'diets')]
+    private Collection $recipes;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->recipes = new ArrayCollection();
     }
 
     public function addUser(User $user): self
@@ -46,6 +50,28 @@ class Diet
     
         return $this;
     }
+
+
+    public function addRecipe(Recipe $recipe): self
+    {
+        if (!$this->recipes->contains($recipe)) {
+            $this->recipes[] = $recipe;
+            $recipe->addDiet($this);
+        }
+    
+        return $this;
+    }
+    
+    public function removeRecipe(Recipe $recipe): self
+    {
+        if ($this->recipes->contains($recipe)) {
+            $this->recipes->removeElement($recipe);
+            $recipe->removeDiet($this);
+        }
+    
+        return $this;
+    }
+
 
 
     public function getId(): ?int

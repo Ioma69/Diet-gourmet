@@ -1,0 +1,67 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+{% if ( is_granted('ROLE_ADMIN') ) %}
+	<div class="container mt-5 rounded">
+		<div class="card shadow p-3 mb-5 mt-3 customForm">
+			<h2 class="text-center mb-4 titleForm">Ajouter une recette</h2>
+			{{ form_start(recipes, {'attr': {'class': 'row g-3'}}) }}
+			<div class="col-md-12">
+				<div class="mb-3 form-group">
+					{{ form_label(recipes.name) }}
+					{{ form_widget(recipes.name, {'attr': {'class': 'form-control border border-light'}}) }}
+					{{ form_errors(recipes.name) }}
+				</div>
+				<div class="mb-3 form-group">
+					{{ form_label(recipes.description) }}
+					{{ form_widget(recipes.description, {'attr': {'class': 'form-control border border-light'}}) }}
+					{{ form_errors(recipes.description) }}
+				</div>
+				<div class="mb-3 form-group">
+					{{ form_label(recipes.image) }}
+					{{ form_widget(recipes.image, {'attr': {'class': 'form-control border border-light'}}) }}
+					{{ form_errors(recipes.image) }}
+				</div>
+				<div class="mb-3 form-group">
+					{{ form_label(recipes.preparation_time) }}
+					{{ form_widget(recipes.preparation_time, {'attr': {'class': 'form-control border border-light'}}) }}
+					{{ form_errors(recipes.preparation_time) }}
+				</div>
+				<div class="mb-3 form-group">
+					{{ form_label(recipes.cooking_time) }}
+					{{ form_widget(recipes.cooking_time, {'attr': {'class': 'form-control border border-light'}}) }}
+					{{ form_errors(recipes.cooking_time) }}
+				</div>
+				<div class="mb-3 form-group">
+					{{ form_label(recipes.ingredients) }}
+					{{ form_widget(recipes.ingredients, {'attr': {'class': 'form-control border border-light'}}) }}
+					{{ form_errors(recipes.ingredients) }}
+				</div>
+				<div class="mb-3 form-group">
+					{{ form_label(recipes.preparation) }}
+					{{ form_widget(recipes.preparation, {'attr': {'class': 'form-control border border-light'}}) }}
+					{{ form_errors(recipes.preparation) }}
+				</div>
+				<div class="mb-3 form-group">
+					{{ form_label(recipes.allergy) }}
+					{{ form_widget(recipes.allergy, {'attr': {'class': 'form-control border border-light'}}) }}
+					{{ form_errors(recipes.allergy) }}
+				</div>
+				<div class="mb-3 form-group">
+					{{ form_label(recipes.type) }}
+					{{ form_widget(recipes.type, {'attr': {'class': 'form-control border border-light'}}) }}
+					{{ form_errors(recipes.type) }}
+				</div>
+
+
+			</div>
+			<div class="col-12">
+				{{ form_rest(recipes) }}
+				<button class="btn me-2" type="submit">Ajouter une recette</button>
+			</div>
+			{{ form_end(recipes) }}
+		</div>
+	</div>
+	 {% endif %} 
+{% endblock %}

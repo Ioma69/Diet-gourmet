@@ -115,8 +115,12 @@ class UserType extends AbstractType
                 'label' => "Types d'allergènes :",
                 'required' => false,
                 'choices' => [
-                    'Arachide' => 'allergene1',
-                    'Lactose' => 'allergene2',
+                    'Arachide' => 'Arachide',
+                    'Lactose' => 'Lactose',
+                    'Gluten' => 'Gluten',
+                    'Fruits rouges' => 'Fruits rouges',
+                    'Oeufs' => 'Oeufs',
+
                   
                 ],
                 'multiple' => true,
@@ -128,8 +132,11 @@ class UserType extends AbstractType
                 'label' => 'Types de régimes :',
                 'required' => false,
                 'choices' => [
-                    'Régime végétalien' => 'regime1',
-                    'Régime végétarien' => 'regime2',
+                    'Régime végétalien' => 'Régime végétalien',
+                    'Régime végétarien' => 'Régime végétarien',
+                    'Régime Paléo' => 'Régime Paléo',
+                    'Régime sans sel' => 'Régime sans sel',
+                    'Régime anticholestérol' => 'Régime anticholestérol',
                     
                 ],
                 'multiple' => true,
