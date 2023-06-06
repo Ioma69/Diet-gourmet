@@ -1,45 +1,43 @@
 {% extends 'base.html.twig' %}
 
-
-
 {% block body %}
-
-{% for recipe in recipes %}
-
-  <h3>{{ recipe.name }}</h3>
-    
-<section>
-
-  <div class="row">
-      <div class="col-md-5">
-        <img src="/images/{{ recipe.image }}" alt="{{ recipe.name}}" class="img-fluid">
+<div class="mt-5"> 
+  <h1 class="text-center mb-5">Recettes</h1>
+  {% for recipe in recipes %}
+  <div class="row d-flex justify-content-center">
+    <div class=" col-10 col-md-8 col-lg-6">
+      <div class="card mb-4">
+        <img src="{{ asset('uploads/' ~ recipe.image) }}" class="card-img-top" alt="{{ recipe.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ recipe.name }}</h5>
+          <div class="detail">
+            <h6 class="fw-bold">Nom :</h6>
+            <p class="card-text">{{ recipe.name }}</p>
+          </div>
+          <div class="detail">
+            <h6 class="fw-bold">Description :</h6>
+            <p class="card-text">{{ recipe.description }}</p>
+          </div>
+          <div class="detail">
+            <h6 class="fw-bold">Temps de préparation :</h6>
+            <p class="card-text">{{ recipe.preparationtime }} minutes</p>
+          </div>
+          <div class="detail">
+            <h6 class="fw-bold">Temps de cuisson :</h6>
+            <p class="card-text">{{ recipe.cookingtime }} minutes</p>
+          </div>
+          <div class="detail">
+            <h6 class="fw-bold">Ingrédients :</h6>
+            <p class="card-text">{{ recipe.ingredients }}</p>
+          </div>
+          <div class="detail">
+            <h6 class="fw-bold">Étapes de la recette :</h6>
+            <p class="card-text">{{ recipe.preparation }}</p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-7 my-auto">
-      
-        <h6>Nom :</h6>
-        <p>{{ recipe.name }}</p>
-        <hr>
-        <h6>Description :</h6>
-        <p>{{ recipe.description }}</p>
-        <hr>
-        <h6>Temps de préparation : </h6>
-        <p>{{ recipe.preparation_time}}</p>
-        <hr>
-        <h6>Temps de cuisson :</h6>
-        <p>{{ recipe.cooking_time }}</p>
-        <hr>
-        <h6>Ingrédients : </h6>
-        <p>{{ recipe.ingredients }}</p>
-        <hr>
-        <h6>Etapes de la recette :</h6>
-        <p>{{ recipe.preparation }}</p>
-
-      </div>
+    </div>
   </div>
-        
-
-</section>
-
-    {% endfor %} 
-
+  {% endfor %}
+</div>
 {% endblock %}

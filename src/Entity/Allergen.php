@@ -6,8 +6,11 @@ use App\Repository\AllergenRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: AllergenRepository::class)]
+
+
 class Allergen
 {
     #[ORM\Id]
@@ -16,7 +19,7 @@ class Allergen
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?array $allergy = null;
+    private ?string $allergy = null;
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: "allergens")]
     private Collection $users;
@@ -83,7 +86,7 @@ public function removeUser(User $user): self
     /**
      * Get the value of allergy
      */
-    public function getAllergy(): ?array
+    public function getAllergy(): ?string
     {
         return $this->allergy;
     }
@@ -91,7 +94,7 @@ public function removeUser(User $user): self
     /**
      * Set the value of allergy
      */
-    public function setAllergy(?array $allergy): self
+    public function setAllergy(?string $allergy): self
     {
         $this->allergy = $allergy;
 

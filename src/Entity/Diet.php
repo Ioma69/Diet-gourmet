@@ -6,8 +6,10 @@ use App\Repository\DietRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: DietRepository::class)]
+
 class Diet
 {
     #[ORM\Id]
@@ -16,7 +18,7 @@ class Diet
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?array $type = null;
+    private ?string $type = null;
 
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: "diets")]
@@ -82,7 +84,7 @@ class Diet
     /**
      * Get the value of type
      */
-    public function getType(): ?array
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -90,7 +92,7 @@ class Diet
     /**
      * Set the value of type
      */
-    public function setType(?array $type): self
+    public function setType(?string $type): self
     {
         $this->type = $type;
 

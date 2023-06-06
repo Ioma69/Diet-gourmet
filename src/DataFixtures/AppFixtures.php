@@ -3,6 +3,8 @@
 namespace App\DataFixtures;
 
 use App\Entity\Admin;
+use App\Entity\Allergen;
+use App\Entity\Diet;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -21,9 +23,10 @@ class AppFixtures extends Fixture
          $Sandrine = new Admin($this->passwordHasher);
          $Sandrine->setEmail("SandrineCoupart@hotmail.com")->setPassword("SandrineCoupart")->setRoles(["ROLE_ADMIN"]);
          $manager->persist($Sandrine);
-         $manager->flush();
+        
+       
+    $manager->flush();
 
     }
 
-    
 }

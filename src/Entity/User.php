@@ -283,4 +283,16 @@ public function removeDiet(Diet $diet): self
         return $this;
     }
 
+
+    // Récupérer les allergenes et les types de régimes
+    public function getAllergens(): Collection
+    {
+        return $this->allergens;
+    }
+    
+    public function getDiets(): Collection
+    {
+        return $this->diets;
+    }
+
 }

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Recipe;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -39,6 +40,32 @@ class RecipeRepository extends ServiceEntityRepository
         }
     }
 
+
+    public function findByAllergenAndDiet(Collection $allergens, Collection $diets)
+    {
+        $queryBuilder = $this->createQueryBuilder('r');
+        
+        if (!empty($allergens)) {
+            $queryBuilder
+                ->join('r.allergens', 'a')
+                ->andWhere('a IN (:allergens)')
+                ->setParameter('allergens', $allergens);
+        }
+        
+        if (!empty($diets)) {
+            $queryBuilder
+                ->join('r.diets', 'd')
+                ->andWhere('d IN (:diets)')
+                ->setParameter('diets', $diets);
+        }
+        
+        return $queryBuilder->getQuery()->getResult();
+    }
+}
+
+
+
+
 //    /**
 //     * @return Recipe[] Returns an array of Recipe objects
 //     */
@@ -63,4 +90,4 @@ class RecipeRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
-}
+
