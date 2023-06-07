@@ -9,6 +9,7 @@ use App\Entity\User;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -153,6 +154,11 @@ class RecipeType extends AbstractType
                     'multiple' => true,
                     'expanded' => true,
                     'mapped' => false
+                ])
+
+                ->add('isOnlyAccessibleToPatients', CheckboxType::class, [
+                    'label' => 'Uniquement accessible aux patients',
+                    'required' => false,
                 ]);
 
 

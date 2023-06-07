@@ -34,6 +34,16 @@
             <h6 class="fw-bold">Étapes de la recette :</h6>
             <p class="card-text">{{ recipe.preparation }}</p>
           </div>
+          {% if ( is_granted('ROLE_ADMIN') ) %}
+									<div class="card-footer d-flex justify-content-center">
+										<a href="{{ path('deleterecipe', {'id': recipe.id}) }}" class="btn btn-sm me-1 adminButton">
+											<i class="fas fa-trash"></i>
+											Supprimer</a>
+										<a href="{{ path('editrecipe', {'id': recipe.id}) }}" class="btn btn-sm adminButton">
+											<i class="fas fa-edit"></i>
+											Modifier</a>
+									</div>
+              {% endif %}
         </div>
       </div>
     </div>

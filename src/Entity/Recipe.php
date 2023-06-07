@@ -36,6 +36,10 @@ class Recipe
     #[ORM\Column(length: 255)]
     private ?string $preparation = null;
 
+    #[ORM\Column(type:"boolean")]
+    private ?bool $isOnlyAccessibleToPatients;
+
+
 
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: "recipes")]
@@ -282,6 +286,18 @@ public function removeAllergen(Allergen $allergen): self
     public function setDiets(Collection $diets): self
     {
         $this->diets = $diets;
+
+        return $this;
+    }
+
+    public function getIsOnlyAccessibleToPatients(): bool
+    {
+        return $this->isOnlyAccessibleToPatients;
+    }
+
+    public function setIsOnlyAccessibleToPatients(bool $isOnlyAccessibleToPatients): self
+    {
+        $this->isOnlyAccessibleToPatients = $isOnlyAccessibleToPatients;
 
         return $this;
     }

@@ -295,4 +295,22 @@ public function removeDiet(Diet $diet): self
         return $this->diets;
     }
 
+
+    /**
+     * Get the value of recipes
+     */
+    public function getRecipes(): Collection
+    {
+        return $this->recipes;
+    }
+
+    /**
+     * Set the value of recipes
+     */
+    public function setRecipes(Collection $recipes): self
+    {
+        $this->recipes = $recipes;
+
+        return $this;
+    }
 }
