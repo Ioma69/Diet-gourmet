@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
 <div class="mt-5"> 
   <h1 class="text-center mb-5">Recettes</h1>
   {% for recipe in recipes %}
@@ -34,6 +35,9 @@
             <h6 class="fw-bold">Étapes de la recette :</h6>
             <p class="card-text">{{ recipe.preparation }}</p>
           </div>
+          
+          
+
           {% if ( is_granted('ROLE_ADMIN') ) %}
 									<div class="card-footer d-flex justify-content-center">
 										<a href="{{ path('deleterecipe', {'id': recipe.id}) }}" class="btn btn-sm me-1 adminButton">
@@ -48,6 +52,23 @@
       </div>
     </div>
   </div>
-  {% endfor %}
+{% if is_granted('ROLE_USER') %}
+<div class="stars d-flex justify-content-center mb-2" id="stars-{{ recipe.id }}" data-recipe="{{ recipe.id }}" data-average-rating="{{ recipe.note }}">
+  <i class="lar la-star" data-value="1"></i>
+  <i class="lar la-star" data-value="2"></i>
+  <i class="lar la-star" data-value="3"></i>
+  <i class="lar la-star" data-value="4"></i>
+  <i class="lar la-star" data-value="5"></i>
 </div>
+<div class="average-rating d-flex justify-content-center">
+  <input type="hidden" id="note" value="0">
+  Note moyenne : <span>{{ recipe.note|number_format(1) }}</span>
+</div>
+<div class="total-ratings d-flex justify-content-center">
+  Nombre total de notes : <span>{{ recipe.totalRatings }}</span>
+</div>
+
+
+ {% endif %}
+ {% endfor %}
 {% endblock %}

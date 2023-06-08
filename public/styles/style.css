@@ -2,3 +2,15 @@ body{
     background-color: rgb(190, 235, 190);
 }
 
+.highlight {
+    color: gold;
+  }
+
+  .filled-star {
+    color: yellow; 
+  }
+  
+  .empty-star {
+    color: gray; 
+  }
+  

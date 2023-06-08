@@ -19,14 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
 
-    private $recipeRepository;
-
-public function __construct(RecipeRepository $recipeRepository)
-{
-    $this->recipeRepository = $recipeRepository;
-}
-
-
+  
     #[Route('/user/new', name: 'user_new')]
     public function new(Request $request, UserPasswordHasherInterface $userPasswordHasher, ManagerRegistry $managerRegistry, RecipeRepository $recipeRepository, EntityManagerInterface $entityManager): Response
     {
@@ -110,7 +103,7 @@ public function __construct(RecipeRepository $recipeRepository)
                 $existingAllergen = $allergenRepository->findOneBy(['allergy' => $allergenId]);
                 if ($existingAllergen) {
                     // L'allergie existe déjà en base de données
-                    // Utilisez $existingAllergen au lieu de créer une nouvelle instance d'Allergen
+                    // Utilise $existingAllergen au lieu de créer une nouvelle instance d'Allergen
                     $allergen = $existingAllergen;
                 } else {
                     // L'allergie n'existe pas encore en base de données, créez une nouvelle instance d'Allergen
@@ -128,7 +121,7 @@ public function __construct(RecipeRepository $recipeRepository)
                 $existingDiet = $dietRepository->findOneBy(['type' => $dietId]);
                 if ($existingDiet) {
                     // Le type de régime existe déjà en base de données
-                    // Utilisez $existingDiet au lieu de créer une nouvelle instance de Diet
+                    // Utilise $existingDiet au lieu de créer une nouvelle instance de Diet
                     $diet = $existingDiet;
                 } else {
                     // Le type de régime n'existe pas encore en base de données, créez une nouvelle instance de Diet
@@ -140,12 +133,12 @@ public function __construct(RecipeRepository $recipeRepository)
                 $diets[] = $diet;
             }
 
-            // Associer les objets Allergen à l'utilisateur
+            // Associe les objets Allergen à l'utilisateur
             foreach ($allergens as $allergen) {
                 $user->addAllergen($allergen);
             }
 
-            // Associer les objets Diet à l'utilisateur
+            // Associe les objets Diet à l'utilisateur
             foreach ($diets as $diet) {
                 $user->addDiet($diet);
             }
@@ -158,4 +151,5 @@ public function __construct(RecipeRepository $recipeRepository)
             "form" => $form->createView(),
         ]);
     }
+
 }

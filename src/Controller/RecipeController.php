@@ -8,11 +8,14 @@ use App\Entity\Recipe;
 use App\Entity\User;
 use App\Form\RecipeType;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -76,17 +79,17 @@ class RecipeController extends AbstractController
                 
 
                 if ($isOnlyAccessibleToPatients) {
-                    // Associer la recette à tous les patients avec le role user
+                    // Associe la recette à tous les patients avec le role user
                     $users = $userRepository->findBy(['roles' => 'ROLE_USER']);
         
                     foreach ($users as $user) {
                         $recipe->addUser($user);
                     }
                 }
-                // Récupérer tous les utilisateurs
+                // Récupére tous les utilisateurs
                 $users = $userRepository->findAll();
             
-                // Filtrer les utilisateurs ayant des allergies et des types de régimes différents de ceux de la recette
+                // Filtre les utilisateurs ayant des allergies et des types de régimes différents de ceux de la recette
                 $filteredUsers = [];
                 foreach ($users as $user) {
                     $userAllergens = $user->getAllergens();
@@ -110,9 +113,9 @@ class RecipeController extends AbstractController
                     }
                     
 
-                    $hasSameDiets = false; // Initialiser à false avant la boucle
+                    $hasSameDiets = false; // Initialise à false avant la boucle
                     foreach ($dietIds as $dietId) {
-                        $found = false; // Initialiser à false avant chaque itération
+                        $found = false; // Initialise à false avant chaque itération
                         foreach ($userDiets as $userDiet) {
                             if ($dietId == $userDiet->getType()) {
                                 $found = true;
@@ -120,7 +123,7 @@ class RecipeController extends AbstractController
                             }
                         }
                        
-                        if ($found) { // Utiliser !$found pour vérifier l'absence de correspondance
+                        if ($found) { // Utilise !$found pour vérifier l'absence de correspondance
                             $hasSameDiets = true;
                             break;
                         }
@@ -133,7 +136,7 @@ class RecipeController extends AbstractController
                 }
             
                 if (!empty($filteredUsers)) {
-                    // Associer tous les utilisateurs disponibles à la recette
+                    // Associe tous les utilisateurs disponibles à la recette
                     foreach ($filteredUsers as $user) {
                         $recipe->addUser($user);
                     }
@@ -190,12 +193,12 @@ class RecipeController extends AbstractController
                        }
                    }
                
-                   // Associer les objets Allergen à la recette
+                   // Associe les objets Allergen à la recette
                    foreach ($allergens as $allergen) {
                        $recipe->addAllergen($allergen);
                    }
                
-                   // Associer les objets Diet à la recette
+                   // Associe les objets Diet à la recette
                    foreach ($diets as $diet) {
                        $recipe->addDiet($diet);
                    }
@@ -233,7 +236,7 @@ class RecipeController extends AbstractController
 
 
        #[Route('/recipe/edit/{id<\d+>}', name: 'editrecipe')]
-        public function updateRecipe(Request $request, ManagerRegistry $doctrine, ManagerRegistry $managerRegistry, UserRepository $userRepository, SluggerInterface $slugger): Response
+        public function updateRecipe(Request $request, ManagerRegistry $doctrine, UserRepository $userRepository, SluggerInterface $slugger): Response
         {
             if ($this->isGranted('ROLE_ADMIN')) {
               
@@ -248,17 +251,17 @@ class RecipeController extends AbstractController
                  
  
                  if ($isOnlyAccessibleToPatients) {
-                     // Associer la recette à tous les patients avec le role user
+                     // Associe la recette à tous les patients avec le role user
                      $users = $userRepository->findBy(['roles' => 'ROLE_USER']);
          
                      foreach ($users as $user) {
                          $recipe->addUser($user);
                      }
                  }
-                 // Récupérer tous les utilisateurs
+                 // Récupére tous les utilisateurs
                  $users = $userRepository->findAll();
              
-                 // Filtrer les utilisateurs ayant des allergies et des types de régimes différents de ceux de la recette
+                 // Filtre les utilisateurs ayant des allergies et des types de régimes différents de ceux de la recette
                  $filteredUsers = [];
                  foreach ($users as $user) {
                      $userAllergens = $user->getAllergens();
@@ -282,9 +285,9 @@ class RecipeController extends AbstractController
                      }
                      
  
-                     $hasSameDiets = false; // Initialiser à false avant la boucle
+                     $hasSameDiets = false; // Initialise à false avant la boucle
                      foreach ($dietIds as $dietId) {
-                         $found = false; // Initialiser à false avant chaque itération
+                         $found = false; // Initialise à false avant chaque itération
                          foreach ($userDiets as $userDiet) {
                              if ($dietId == $userDiet->getType()) {
                                  $found = true;
@@ -292,7 +295,7 @@ class RecipeController extends AbstractController
                              }
                          }
                         
-                         if ($found) { // Utiliser !$found pour vérifier l'absence de correspondance
+                         if ($found) { // Utilise !$found pour vérifier l'absence de correspondance
                              $hasSameDiets = true;
                              break;
                          }
@@ -305,7 +308,7 @@ class RecipeController extends AbstractController
                  }
              
                  if (!empty($filteredUsers)) {
-                     // Associer tous les utilisateurs disponibles à la recette
+                     // Associe tous les utilisateurs disponibles à la recette
                      foreach ($filteredUsers as $user) {
                          $recipe->addUser($user);
                      }
@@ -334,7 +337,7 @@ class RecipeController extends AbstractController
                     $allergenIds = $recipeForm->get('allergy')->getData();
                     $dietIds = $recipeForm->get('type')->getData();
                 
-                    $entityManager = $managerRegistry->getManager();
+                    $entityManager = $doctrine->getManager();
  
                     $allergens = [];
                     foreach ($allergenIds as $allergenId) {
@@ -362,12 +365,12 @@ class RecipeController extends AbstractController
                         }
                     }
                 
-                    // Associer les objets Allergen à la recette
+                    // Associe les objets Allergen à la recette
                     foreach ($allergens as $allergen) {
                         $recipe->addAllergen($allergen);
                     }
                 
-                    // Associer les objets Diet à la recette
+                    // Associe les objets Diet à la recette
                     foreach ($diets as $diet) {
                         $recipe->addDiet($diet);
                     }
@@ -387,6 +390,59 @@ class RecipeController extends AbstractController
             return $this->redirectToRoute("home");
         }
  
-}
 
-
+        #[Route('/recipe/rate', name: 'rate_recipe', methods: ['POST'])]
+        public function rateRecipe(Request $request, EntityManagerInterface $entityManager): JsonResponse
+        {
+            // Vérification du rôle de l'utilisateur avant de traiter la requête Ajax
+            if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_USER')) {
+                $content = $request->getContent();
+                $data = json_decode($content, true);
+            
+                $recipeId = $data['recipeId'];
+                $rating = $data['rating'];
+            
+                // Récupére la recette à partir de l'ID
+                $recipe = $entityManager->getRepository(Recipe::class)->find($recipeId);
+            
+                if ($recipe) {
+                    // Vérifie si l'utilisateur a déjà noté la recette
+                    $user = $this->getUser();
+                    if ($user && $recipe->getUsers()->contains($user)) {
+                        throw new HttpException(400, 'Vous avez déjà noté cette recette');
+                    }
+                    
+            
+                    // Récupére la note moyenne existante et le nombre total de notes
+                    $averageRating = $recipe->getNote();
+                    $totalRatings = $recipe->getTotalRatings();
+        
+                    // Mettre à jour la note moyenne et le nombre total de notes
+                    $newTotalRatings = $totalRatings + 1;
+                    $newAverageRating = (($averageRating * $totalRatings) + $rating) / $newTotalRatings;
+        
+                    $recipe->setNote($newAverageRating);
+                    $recipe->setTotalRatings($newTotalRatings);
+            
+                    // Ajoute l'utilisateur à la liste des utilisateurs ayant noté la recette
+                    $recipe->addUser($user);
+            
+                    $entityManager->persist($recipe);
+                    $entityManager->flush();
+            
+                    // Retourne les données mises à jour
+                    $responseData = [
+                        'averageRating' => $newAverageRating,
+                        'totalRatings' => $newTotalRatings,
+                    ];
+            
+                    return new JsonResponse($responseData);
+                }
+            
+                throw new \InvalidArgumentException('Recette introuvable');
+            } else {
+                // Renvoie une erreur ou une réponse indiquant que l'accès est interdit
+                return new JsonResponse(['error' => 'Accès interdit'], 403);
+            }
+        }
+    }        

@@ -39,6 +39,13 @@ class Recipe
     #[ORM\Column(type:"boolean")]
     private ?bool $isOnlyAccessibleToPatients;
 
+    #[ORM\Column(type: 'float', nullable: true)]
+    private ?float $note = null;
+
+    #[ORM\Column(type: 'integer')]
+    private int $totalRatings = 0;
+
+
 
 
 
@@ -301,4 +308,48 @@ public function removeAllergen(Allergen $allergen): self
 
         return $this;
     }
+
+   
+    /**
+     * Get the value of note
+     */
+    public function getNote(): ?float
+    {
+        return $this->note;
+    }
+
+    /**
+     * Set the value of note
+     */
+    public function setNote(?float $note): self
+    {
+        $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of totalRatings
+     */
+    public function getTotalRatings(): int
+    {
+        return $this->totalRatings;
+    }
+
+    /**
+     * Set the value of totalRatings
+     */
+    public function setTotalRatings(int $totalRatings): self
+    {
+        $this->totalRatings = $totalRatings;
+
+        return $this;
+    }
+
+    public function getUsers(): Collection
+{
+    return $this->users;
+}
+
+
 }
