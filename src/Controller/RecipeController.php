@@ -6,6 +6,7 @@ use App\Entity\Allergen;
 use App\Entity\Diet;
 use App\Entity\Recipe;
 use App\Entity\User;
+use App\Entity\UserRating;
 use App\Form\RecipeType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -236,11 +237,10 @@ class RecipeController extends AbstractController
 
 
        #[Route('/recipe/edit/{id<\d+>}', name: 'editrecipe')]
-        public function updateRecipe(Request $request, ManagerRegistry $doctrine, UserRepository $userRepository, SluggerInterface $slugger): Response
+        public function updateRecipe(Request $request, Recipe $recipe, ManagerRegistry $doctrine, UserRepository $userRepository, SluggerInterface $slugger): Response
         {
             if ($this->isGranted('ROLE_ADMIN')) {
               
-                $recipe = new Recipe();
                 $recipeForm = $this->createForm(RecipeType::class, $recipe);
                 $recipeForm->handleRequest($request);
         
@@ -374,6 +374,13 @@ class RecipeController extends AbstractController
                     foreach ($diets as $diet) {
                         $recipe->addDiet($diet);
                     }
+
+                    // Remet les compteurs de note à 0
+                     $recipe->getNote();
+                     $recipe->getTotalRatings();
+
+                     $recipe->setNote(0);
+                     $recipe->setTotalRatings(0);
         
                     $em = $doctrine->getManager();
                     $em->persist($recipe);
@@ -391,58 +398,67 @@ class RecipeController extends AbstractController
         }
  
 
-        #[Route('/recipe/rate', name: 'rate_recipe', methods: ['POST'])]
-        public function rateRecipe(Request $request, EntityManagerInterface $entityManager): JsonResponse
-        {
-            // Vérification du rôle de l'utilisateur avant de traiter la requête Ajax
-            if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_USER')) {
-                $content = $request->getContent();
-                $data = json_decode($content, true);
-            
-                $recipeId = $data['recipeId'];
-                $rating = $data['rating'];
-            
-                // Récupére la recette à partir de l'ID
-                $recipe = $entityManager->getRepository(Recipe::class)->find($recipeId);
-            
-                if ($recipe) {
-                    // Vérifie si l'utilisateur a déjà noté la recette
-                    $user = $this->getUser();
-                    if ($user && $recipe->getUsers()->contains($user)) {
-                        throw new HttpException(400, 'Vous avez déjà noté cette recette');
-                    }
-                    
-            
-                    // Récupére la note moyenne existante et le nombre total de notes
-                    $averageRating = $recipe->getNote();
-                    $totalRatings = $recipe->getTotalRatings();
-        
-                    // Mettre à jour la note moyenne et le nombre total de notes
-                    $newTotalRatings = $totalRatings + 1;
-                    $newAverageRating = (($averageRating * $totalRatings) + $rating) / $newTotalRatings;
-        
-                    $recipe->setNote($newAverageRating);
-                    $recipe->setTotalRatings($newTotalRatings);
-            
-                    // Ajoute l'utilisateur à la liste des utilisateurs ayant noté la recette
-                    $recipe->addUser($user);
-            
-                    $entityManager->persist($recipe);
-                    $entityManager->flush();
-            
-                    // Retourne les données mises à jour
-                    $responseData = [
-                        'averageRating' => $newAverageRating,
-                        'totalRatings' => $newTotalRatings,
-                    ];
-            
-                    return new JsonResponse($responseData);
-                }
-            
-                throw new \InvalidArgumentException('Recette introuvable');
-            } else {
-                // Renvoie une erreur ou une réponse indiquant que l'accès est interdit
-                return new JsonResponse(['error' => 'Accès interdit'], 403);
+       #[Route('/recipe/rate', name: 'rate_recipe', methods: ['POST'])]
+public function rateRecipe(Request $request, EntityManagerInterface $entityManager): JsonResponse
+{
+    // Vérification du rôle de l'utilisateur avant de traiter la requête Ajax
+    if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_USER')) {
+        $content = $request->getContent();
+        $data = json_decode($content, true);
+
+        $recipeId = $data['recipeId'];
+        $rating = $data['rating'];
+
+        // Récupére la recette à partir de l'ID
+        $recipe = $entityManager->getRepository(Recipe::class)->find($recipeId);
+
+        if ($recipe) {
+            // Vérifie si l'utilisateur a déjà noté la recette
+            $user = $this->getUser();
+
+            $userRatingRepository = $entityManager->getRepository(UserRating::class);
+            $existingRating = $userRatingRepository->findOneBy(['user' => $user, 'recipe' => $recipe]);
+
+            if ($existingRating) {
+                throw new HttpException(400, 'Vous avez déjà noté cette recette');
             }
+
+            // Crée une nouvelle instance de UserRating
+            $userRating = new UserRating();
+            $userRating->setUser($user)
+                ->setRecipe($recipe)
+                ->setRating($rating);
+
+            // Récupère la note moyenne existante et le nombre total de notes
+            $averageRating = $recipe->getNote();
+            $totalRatings = $recipe->getTotalRatings();
+
+            // Met à jour la note moyenne et le nombre total de notes
+            $newTotalRatings = $totalRatings + 1;
+            $newAverageRating = (($averageRating * $totalRatings) + $rating) / $newTotalRatings;
+
+            $recipe->setNote($newAverageRating);
+            $recipe->setTotalRatings($newTotalRatings);
+
+            // Ajoute l'évaluation de l'utilisateur à la recette
+            $recipe->addUserRating($userRating);
+
+            $entityManager->persist($recipe);
+            $entityManager->flush();
+
+            // Retourne les données mises à jour
+            $responseData = [
+                'averageRating' => $newAverageRating,
+                'totalRatings' => $newTotalRatings,
+            ];
+
+            return new JsonResponse($responseData);
         }
-    }        
+
+        throw new \InvalidArgumentException('Recette introuvable');
+    } else {
+        // Renvoie une erreur ou une réponse indiquant que l'accès est interdit
+        return new JsonResponse(['error' => 'Accès interdit'], 403);
+    }
+}
+}

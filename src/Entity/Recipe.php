@@ -58,13 +58,15 @@ class Recipe
     #[ORM\ManyToMany(targetEntity: Allergen::class, inversedBy: 'recipes')]
     private Collection $allergens;
 
-  
+    #[ORM\OneToMany(targetEntity: UserRating::class, mappedBy: "recipe", cascade: ["persist", "remove"])]
+    private Collection $userRatings;
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->diets = new ArrayCollection();
         $this->allergens = new ArrayCollection();
+        $this->userRatings = new ArrayCollection();
     }
 
 
@@ -128,6 +130,28 @@ public function removeAllergen(Allergen $allergen): self
     
         return $this;
     }
+
+    public function addUserRating(UserRating $userRating): self
+    {
+        if (!$this->userRatings->contains($userRating)) {
+            $this->userRatings[] = $userRating;
+            $userRating->setRecipe($this);
+        }
+
+        return $this;
+    }
+
+
+public function hasUserRated(User $user): bool
+{
+    foreach ($this->userRatings as $userRating) {
+        if ($userRating->getUser() === $user) {
+            return true;
+        }
+    }
+
+    return false;
+}
 
     public function getId(): ?int
     {
@@ -352,4 +376,22 @@ public function removeAllergen(Allergen $allergen): self
 }
 
 
+
+    /**
+     * Get the value of userRatings
+     */
+    public function getUserRatings(): Collection
+    {
+        return $this->userRatings;
+    }
+
+    /**
+     * Set the value of userRatings
+     */
+    public function setUserRatings(Collection $userRatings): self
+    {
+        $this->userRatings = $userRatings;
+
+        return $this;
+    }
 }
