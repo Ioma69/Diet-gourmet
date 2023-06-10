@@ -1,5 +1,12 @@
+html{
+  height: 100%;
+}
+
 body{
     background-color: rgb(190, 235, 190);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .highlight {
@@ -27,23 +34,13 @@ body{
 
 
 
-  .title:hover, .title2:hover {
+  .title:hover {
     background-color: #e9ecef;
     transform: scale(1.05);
     transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
   }
 
-    .title2 {
-    font-family: 'Arial', sans-serif; 
-    color: black; 
-    background-color: #f8f9fa; 
-    border-radius: 10px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    line-height: 1.2;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    border: 2px solid #ccc;
-  }
-
+ 
   .logo {
     height: 110px;
     width: 110px;
