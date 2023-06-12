@@ -23,7 +23,7 @@ class UserController extends AbstractController
     #[Route('/user/new', name: 'user_new')]
     public function new(Request $request, UserPasswordHasherInterface $userPasswordHasher, ManagerRegistry $managerRegistry, RecipeRepository $recipeRepository, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isGranted('ROLE_USER')) {
+        if (!$this->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute("home");
         }
 
@@ -145,6 +145,7 @@ class UserController extends AbstractController
 
 
             $entityManager->flush();
+            return $this->redirectToRoute("recipe");
         }
 
         return $this->render('user/form.html.twig', [

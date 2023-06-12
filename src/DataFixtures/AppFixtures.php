@@ -21,7 +21,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
          $Sandrine = new Admin($this->passwordHasher);
-         $Sandrine->setEmail("SandrineCoupart@hotmail.com")->setPassword("SandrineCoupart")->setRoles(["ROLE_ADMIN"]);
+         $Sandrine->setEmail("SandrineCoupart@hotmail.com")->setPassword("SandrineCoupart007*")->setRoles(["ROLE_ADMIN"]);
          $manager->persist($Sandrine);
         
        

@@ -207,6 +207,7 @@ class RecipeController extends AbstractController
                    $em = $doctrine->getManager();
                    $em->persist($recipe);
                    $em->flush();
+                   return $this->redirectToRoute("recipe");
        
                   
                }
