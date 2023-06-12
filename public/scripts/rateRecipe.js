@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // On écoute le survol
     star.addEventListener("mouseover", function() {
       resetStars();
-      this.style.color = "red";
+      this.style.color = "highlights";
       this.classList.add("las");
       this.classList.remove("lar");
       
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       while (previousStar) {
         // On passe l'étoile qui précède en rouge
-        previousStar.style.color = "red";
+        previousStar.style.color = "highlights";
         previousStar.classList.add("las");
         previousStar.classList.remove("lar");
         
@@ -52,11 +52,11 @@ document.addEventListener('DOMContentLoaded', function() {
   function resetStars(note = 0) {
     for (const star of stars) {
       if (star.dataset.value > note) {
-        star.style.color = "black";
+        star.style.color = "highlights";
         star.classList.add("lar");
         star.classList.remove("las");
       } else {
-        star.style.color = "yellow";
+        star.style.color = "hightlights";
         star.classList.add("las");
         star.classList.remove("lar");
       }

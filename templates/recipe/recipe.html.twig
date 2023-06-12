@@ -4,10 +4,10 @@
 
 <div class="container mt-5 mb-5"> 
   {% if is_granted('ROLE_USER') %}
-    <h1 class="text-center mb-5"> Retrouvez des Recettes Personnalisées par rapport à vos régimes et allergènes</h1>
+    <h1 class="text-center mb-5 colorText"> Retrouvez des Recettes Personnalisées par rapport à vos régimes et allergènes</h1>
   {% else %}
    <div class="d-flex flex-column align-items-center mt-3 mb-5" style="background-color: #ffffff; padding: 20px; border: 1px solid green; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius: 10px;">
-  <h1 class="text-center">Retrouvez des recettes adaptées à tous les régimes</h1>
+  <h1 class="text-center colorText">Retrouvez des recettes adaptées à tous les régimes</h1>
 </div>
 
 
@@ -23,43 +23,43 @@
             <h5 class="card-title">{{ recipe.name }}</h5>
             
             <div class="detail">
-              <h6 class="fw-bold">Nom :</h6>
+              <h6 class="fw-bold colorText">Nom :</h6>
               <p class="card-text mb-2">{{ recipe.name }}</p>
             </div>
             
             <div class="detail">
-              <h6 class="fw-bold">Description :</h6>
+              <h6 class="fw-bold colorText">Description :</h6>
               <p class="card-text mb-2">{{ recipe.description }}</p>
             </div>
             
             <div class="detail">
-              <h6 class="fw-bold">Temps de préparation :</h6>
+              <h6 class="fw-bold colorText">Temps de préparation :</h6>
               <p class="card-text mb-2">{{ recipe.preparationtime }} minutes</p>
             </div>
             
             <div class="detail">
-              <h6 class="fw-bold">Temps de cuisson :</h6>
+              <h6 class="fw-bold colorText">Temps de cuisson :</h6>
               <p class="card-text mb-2">{{ recipe.cookingtime }} minutes</p>
             </div>
             
             <div class="detail">
-              <h6 class="fw-bold">Ingrédients :</h6>
+              <h6 class="fw-bold colorText">Ingrédients :</h6>
               <p class="card-text mb-2">{{ recipe.ingredients }}</p>
             </div>
             
             <div class="detail">
-              <h6 class="fw-bold">Étapes de la recette :</h6>
+              <h6 class="fw-bold colorText">Étapes de la recette :</h6>
               <p class="card-text mb-2">{{ recipe.preparation }}</p>
             </div>
             
             {% if is_granted('ROLE_ADMIN') %}
             <div class="card-footer d-flex justify-content-center mt-4">
               <a href="{{ path('deleterecipe', {'id': recipe.id}) }}" class="btn btn-sm me-1 adminButton">
-                <i class="fas fa-trash"></i>
+                <i class="fas fa-trash colorText"></i>
                 Supprimer
               </a>
               <a href="{{ path('editrecipe', {'id': recipe.id}) }}" class="btn btn-sm adminButton">
-                <i class="fas fa-edit"></i>
+                <i class="fas fa-edit colorText"></i>
                 Modifier
               </a>
             </div>
@@ -78,11 +78,11 @@
         <i class="lar la-star" data-value="4"></i>
         <i class="lar la-star" data-value="5"></i>
       </div>
-      <div class="average-rating d-flex justify-content-center">
+      <div class="average-rating d-flex justify-content-center colorText">
         <input type="hidden" id="note" value="0">
         Note moyenne : <span>{{ recipe.note|number_format(1) }}</span>
       </div>
-      <div class="total-ratings d-flex justify-content-center">
+      <div class="total-ratings d-flex justify-content-center colorText">
         Nombre total de notes : <span>{{ recipe.totalRatings }}</span>
       </div>
     </section>

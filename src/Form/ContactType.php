@@ -18,31 +18,35 @@ class ContactType extends AbstractType
             ->add('nom', TextType::class, [
                 'label' => 'Votre nom',
                 'attr' => [
-                    'placeholder' => 'Merci de saisir votre nom'
+                    'placeholder' => 'Merci de saisir votre nom',
+                    'class' => 'colorText'
                 ]
             ])
             ->add('prenom', TextType::class, [
                 'label' => 'Votre prénom',
                 'attr' => [
-                    'placeholder' => 'Merci de saisir votre prénom'
+                    'placeholder' => 'Merci de saisir votre prénom',
+                    'class' => 'colorText'
                 ]
             ])
             ->add('email', EmailType::class, [
                 'label' =>'Votre Email',
                 'attr' => [
-                    'placeholder' => 'Merci de saisir votre adresse email'
+                    'placeholder' => 'Merci de saisir votre adresse email',
+                    'class' => 'colorText'
                 ]
             ])
             ->add('content', TextareaType::class, [
                 'label' => 'Votre message',
                 'attr' => [
-                    'placeholder' => 'En quoi puis-je vous aidez ?'
+                    'placeholder' => 'En quoi puis-je vous aidez ?',
+                    'class' => 'colorText'
                 ]
             ])
             ->add('Submit', SubmitType::class, [
                 'label' => 'Envoyer',
                 'attr' => [
-                    'class' =>'btn-block btn-primary'
+                    'class' =>'btn-block btnColor colorText'
                 ]
             ])    
         ;
@@ -54,7 +58,7 @@ class ContactType extends AbstractType
                 "data_class" => null,
                 'csrf_protection' => true,
                 'csrf_field_name' => '_token',
-                'csrf_token_id' => 'recipe_item',
+                'csrf_token_id' => 'contact_item',
         ]);
     }
 }

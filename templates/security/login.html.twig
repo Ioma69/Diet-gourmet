@@ -5,14 +5,14 @@
 
 	<div class="container mt-5">
 		<div class="card shadow p-3 mb-5 mt-3 customForm">
-			<h2 class="text-center mb-5 titleForm">Connectez-vous</h2>
+			<h2 class="text-center mb-5 colorText">Connectez-vous</h2>
 			<form method="post" class="row g-3 justify-content-center">
 				<div class="col-md-6">
-					<label for="email" class="form-label">Email</label>
+					<label for="email" class="form-label colorText">Email</label>
 					<input type="email" name="_username" id="email" value="{{ last_username }}" class="form-control border border-light" required>
 				</div>
 				<div class="col-md-6">
-					<label for="password" class="form-label">Mot de passe</label>
+					<label for="password" class="form-label colorText">Mot de passe</label>
 					<div class="input-group">
 						<input type="password" name="_password" id="user_password" class="form-control border border-light" required>
 						<button type="button" class="btn btnCustom" onclick="togglePassword()">
@@ -23,7 +23,7 @@
 				</div>
 				<div class="col-md-12">
 					<input type="hidden" name="_target_path" value="/">
-					<button type="submit" class="btn btn-primary btnCustom mt-3">Connexion</button>
+					<button type="submit" class="btn btnColor mt-3 colorText">Connexion</button>
 				</div>
 			</form>
 		</div>

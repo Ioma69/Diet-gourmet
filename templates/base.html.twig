@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><text y='1.2em' font-size='96'>⚫️</text></svg>">
+    <title>{% block title %}Dietégourmet{% endblock %}</title>
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Découvrez notre site de recettes diététiques en ligne, Dietégourmet. Nous vous proposons une sélection de délicieuses recettes adaptées aux saisons et élaborées avec des ingrédients frais et nutritifs."/>
+    <meta name="keywords" content="Dietégourmet, Nutritionniste, micronutrition, régime "/>
       
     {% block stylesheets %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -13,6 +16,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css" integrity="sha512-vebUliqxrVkBy3gucMhClmyQP9On/HAWQdKDXRaAlb/FKuTbxkjPKUyqVOxAcGwFDka79eTF+YXwfke1h3/wfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&family=Reenie+Beanie&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="pictures/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="pictures/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="pictures/favicon-16x16.png">
+    <link rel="manifest" href="pictures/site.webmanifest">
+    <link rel="mask-icon" href="pictures/safari-pinned-tab.svg" color="#5bbad5">
     {% endblock %}
 
     {% block javascripts %}
@@ -30,9 +41,9 @@
 
 {% block header %}
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light ps-2">
+    <nav class="navbar navbar-expand-lg navbar-white bg-white ps-2">
         <a class="navbar-brand" href="/">
-            <img src="{{ asset('pictures/logo.png') }}" alt="Dietégoutmet" class="logo">
+            <img src="{{ asset('pictures/logo.png') }}" alt="Dietégourmet" class="logo">
         </a>
         <button class="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -40,27 +51,27 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+                    <a class="nav-link colorNav" href="/">Accueil <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Recettes</a>
+                    <a class="nav-link colorNav" href="/recipe">Recettes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link colorNav" href="/contact">Contact</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
                 {% if ( app.user ) and ( is_granted('ROLE_ADMIN') ) %}
                 <li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle text-grey" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<a class="nav-link dropdown-toggle colorText" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 										Admin
 									</a>
 									<ul class="dropdown-menu">
 										<li>
-											<a class="dropdown-item" href="/user/new">Créer un patient</a>
+											<a class="dropdown-item colorText" href="/user/new">Créer un patient</a>
 										</li>
 										<li>
-											<a class="dropdown-item" href="/recipe/upload">Ajouter une recette</a>
+											<a class="dropdown-item colorText" href="/recipe/upload">Ajouter une recette</a>
 										</li>
 									</ul>
 								</li>
@@ -72,13 +83,13 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li>
-                            <a class="dropdown-item" href="/logout">Se déconnecter</a>
+                            <a class="dropdown-item btnColor" href="/logout">Se déconnecter</a>
                         </li>
                     </ul>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a href="/login" class="btn btn-secondary btn me-2">Se connecter</a>
+                    <a href="/login" class="btn btn-secondary btnColor me-2">Se connecter</a>
                 </li>
                 {% endif %}
             </ul>
@@ -107,26 +118,26 @@
     <div class="container py-5">
         <div class="row">
            <div class="col-md-6">
-                    <h3 class="text-center mb-4">À propos de nous</h3>
-                    <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tempor viverra enim, a cursus odio fermentum at. Fusce id dui efficitur, consequat felis eu, ultrices nunc.</p>
-                    <p class="text-center">Consultez nos <a href="/rgpd">mentions légales et notre politique de confidentialité</a>.</p>
+                    <h3 class="text-center mb-4 colorText">À propos de nous</h3>
+                    <p class="text-center colorText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tempor viverra enim, a cursus odio fermentum at. Fusce id dui efficitur, consequat felis eu, ultrices nunc.</p>
+                    <p class="text-center colorText">Consultez nos <a href="/rgpd">mentions légales et notre politique de confidentialité</a>.</p>
             </div>
 
             <div class="col-md-6">
-                <h3 class="text-center mb-4">Contactez-nous</h3>
+                <h3 class="text-center mb-4 colorText">Contactez-nous</h3>
                 <p class="text-center">
-                    <i class="fa-regular fa-address-book me-1"></i> Adresse : 123 rue de l'Exemple, 75000 Paris
+                    <i class="fa-regular fa-address-book me-1 colorText"></i> Adresse : 123 rue de l'Exemple, 75000 Paris
                 </p>
                 <p class="text-center">
-                    <i class="fa-solid fa-mobile-screen me-1"></i> Téléphone : 01 234 567 89
+                    <i class="fa-solid fa-mobile-screen me-1 colorText"></i> Téléphone : 01 234 567 89
                 </p>
                 <p class="text-center">
-                    <i class="fa-regular fa-envelope me-1"></i> Email : contact@monsite.com
+                    <i class="fa-regular fa-envelope me-1 colorText"></i> Email : contact@monsite.com
                 </p>
             </div>
         </div>
         <hr>
-        <div class="text-center">&copy; {{ "now"|date("Y") }} Mon Site. Tous droits réservés.</div>
+        <div class="text-center colorText">&copy; {{ "now"|date("Y") }} Mon Site. Tous droits réservés.</div>
     </div>
 </footer>
 {% endblock %}

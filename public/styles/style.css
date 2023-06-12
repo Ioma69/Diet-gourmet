@@ -3,28 +3,28 @@ html{
 }
 
 body{
-    background-color: rgb(190, 235, 190);
+    background-color: #609a7d;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-.highlight {
-    color: gold;
+.highlights {
+    color: #DC9A7D;
   }
 
   .filled-star {
-    color: yellow; 
+    color: #DC9A7D; 
   }
   
   .empty-star {
-    color: gray; 
+    color: #DC9A7D; 
   }
   
   .title {
-    font-family: 'Arial', sans-serif; 
-    color: black; 
-    background-color: #f8f9fa; 
+    font-family: 'Noto Sans', sans-serif;
+    color: #0c0920; 
+    background-color: #f3f3f7; 
     border-radius: 10px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     line-height: 1.2;
@@ -46,4 +46,22 @@ body{
     width: 110px;
   }
 
+  .colorNav,.colorText{
+    color: #0C0920;
+    font-family: 'Noto Sans', sans-serif;
+    
+  }
 
+  .fontHandF {
+    font-family: 'Reenie Beanie', cursive;
+  }
+  
+  .colorInsert {
+    background-color: #f3f3f7;
+  }
+
+  .btnColor{
+    background-color: #bdb9b3;
+  }
+
+  
