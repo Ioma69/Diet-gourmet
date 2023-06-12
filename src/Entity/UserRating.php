@@ -13,9 +13,9 @@ class UserRating
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(targetEntity: User::class)]
-    private User $user;
-
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'userRatings')]
+    private $user;
+    
     #[ORM\ManyToOne(targetEntity: Recipe::class, inversedBy:"userRatings")]
     private Recipe $recipe;
 

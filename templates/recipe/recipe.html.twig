@@ -7,7 +7,7 @@
     <h1 class="text-center mb-5"> Retrouvez des Recettes Personnalisées par rapport à vos régimes et allergènes</h1>
   {% else %}
    <div class="d-flex flex-column align-items-center mt-3 mb-5" style="background-color: #ffffff; padding: 20px; border: 1px solid green; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius: 10px;">
-  <h1 class="text-center" style="font-weight: bold; text-transform: uppercase; color: #00cc00;">Retrouvez des recettes adaptées à tous les régimes</h1>
+  <h1 class="text-center">Retrouvez des recettes adaptées à tous les régimes</h1>
 </div>
 
 
@@ -15,10 +15,10 @@
   {% endif %}
   
   {% for recipe in recipes %}
-    <div class="row justify-content-center mb-5 mt-5">
-      <div class="col-10 col-md-8 col-lg-6">
+    <div class="row justify-content-center mb-3 mt-5">
+      <div class="col-10 col-md-8 col-lg-6 mt-5">
         <div class="card shadow mb-4">
-          <img src="{{ asset('uploads/' ~ recipe.image) }}" class="card-img-top" alt="{{ recipe.name }}">
+          <img src="{{ asset('uploads/' ~ recipe.image) }}" class="card-img-top" alt="{{ recipe.name }}" width="634" height="475">
           <div class="card-body">
             <h5 class="card-title">{{ recipe.name }}</h5>
             

@@ -3,7 +3,7 @@
 
 {% block body %}
 {% if ( is_granted('ROLE_ADMIN') ) %}
-	<div class="container mt-5 rounded">
+	<div class="container mt-5 rounded mb-5">
 		<div class="card shadow p-3 mb-5 mt-3 customForm">
 			<h2 class="text-center mb-4 titleForm">Ajouter une recette</h2>
 			{{ form_start(recipes, {'attr': {'class': 'row g-3'}}) }}

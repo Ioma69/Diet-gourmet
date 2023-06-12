@@ -59,6 +59,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Diet::class, inversedBy: "users")]
     #[ORM\JoinTable(name: "user_diets")]
     private Collection $diets;
+
+    
+    #[ORM\OneToMany(targetEntity:UserRating::class, mappedBy:"user")]
+ 
+    private $userRatings;
    
 
 
@@ -68,6 +73,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->recipes = new ArrayCollection();
         $this->allergens = new ArrayCollection();
         $this->diets = new ArrayCollection();
+        $this->userRatings = new ArrayCollection();
     }
 
 
@@ -310,6 +316,24 @@ public function removeDiet(Diet $diet): self
     public function setRecipes(Collection $recipes): self
     {
         $this->recipes = $recipes;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of userRatings
+     */
+    public function getUserRatings()
+    {
+        return $this->userRatings;
+    }
+
+    /**
+     * Set the value of userRatings
+     */
+    public function setUserRatings($userRatings): self
+    {
+        $this->userRatings = $userRatings;
 
         return $this;
     }
