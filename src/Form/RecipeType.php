@@ -36,7 +36,7 @@ class RecipeType extends AbstractType
                 "required" => true,
                 "constraints" => [
                     new NotBlank(["message" => "Le nom ne peut pas être vide !"]),
-                    new Regex(['pattern' => "/^[A-Za-zÀ-ÿ' ,!\?0-9]+(?:\?[A-Za-zÀ-ÿ' ,!\?0-9]*)?$/", 'message' => "Entrez le nom du plat sans tirets ni caractères spéciaux"]),
+                   
                     new Length(["min" => 3, "max" => 80, "minMessage" => "Le nom du plat doit etre compris entre 3 et 80 caracteres", "maxMessage" => "Le nom du plat ne doit pas faire plus de 80 caractères"])
                 ]
             ])
@@ -49,7 +49,7 @@ class RecipeType extends AbstractType
                     'constraints'
                     => [
                         new NotBlank(['message' => "Veuillez renseigner votre nom"]),
-                        New Regex(['pattern' => "/^[A-Za-zÀ-ÿ' ,!\?0-9]+(?:\?[A-Za-zÀ-ÿ' ,!\?0-9]*)?$/", 'message' => "Entrez la description sans tirets ni caractères spéciaux"]),
+                       
                         new Length(["min" => 3, "max" => 255, "minMessage" => "La description doit etre compris entre 3 et 255 caracteres", "maxMessage" => "La description ne doit pas faire plus de 255 caractères"])
                     ]
                 ]
@@ -115,7 +115,7 @@ class RecipeType extends AbstractType
                     'constraints'
                     => [
                         new NotBlank(['message' => "Le mot de passe ne doit pas etre vide"]),
-                        New Regex(['pattern' => "/^[A-Za-zÀ-ÿ' ,!\?0-9]+(?:\?[A-Za-zÀ-ÿ' ,!\?0-9]*)?$/", 'message' => "Entrez la description sans tirets ni caractères spéciaux"]),
+                       
                         new Length(["min" => 3, "max" => 255, "minMessage" => "La description doit etre compris entre 3 et 255 caracteres", "maxMessage" => "La description ne doit pas faire plus de 255 caractères"]),
                        
                     ]
@@ -130,7 +130,7 @@ class RecipeType extends AbstractType
                     'constraints'
                     => [
                         new NotBlank(['message' => "Le mot de passe ne doit pas etre vide"]),
-                        New Regex(['pattern' => "/^[A-Za-zÀ-ÿ' ,!\?0-9]+(?:\?[A-Za-zÀ-ÿ' ,!\?0-9]*)?$/", 'message' => "Entrez la description sans tirets ni caractères spéciaux"]),
+                        
                         new Length(["min" => 3, "max" => 255, "minMessage" => "La description doit etre compris entre 3 et 255 caracteres", "maxMessage" => "La description ne doit pas faire plus de 255 caractères"])
                     ]
                 ])

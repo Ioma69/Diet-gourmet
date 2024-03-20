@@ -3,12 +3,19 @@ html{
 }
 
 body{
-    background-color: #609a7d;
-    min-height: 100vh;
+    background-color: #ddcce6;
     display: flex;
     flex-direction: column;
+    font-family: "Prata", serif;
 }
 
+.card-text {
+  
+  font-family: "Nunito Sans", sans-serif;
+}
+p {
+  font-family: "Prata", serif;
+}
 .highlights {
     color: #DC9A7D;
   }
@@ -22,9 +29,9 @@ body{
   }
   
   .title {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: "Prata", serif;
     color: #0c0920; 
-    background-color: #f3f3f7; 
+    background-color: #ffffff; 
     border-radius: 10px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     line-height: 1.2;
@@ -48,16 +55,16 @@ body{
 
   .colorNav,.colorText{
     color: #0C0920;
-    font-family: 'Noto Sans', sans-serif;
-    
   }
 
-  .fontHandF {
-    font-family: 'Reenie Beanie', cursive;
+  .colorNav {
+    font-family: "Oswald", sans-serif;
+    letter-spacing: 1px;
   }
 
-  .colorInsert {
-    background-color: #f3f3f7;
+
+  .backgroundFooter,.navbarBg,.colorInsert,.titleBg   {
+    background-color:#ffffff;
   }
 
   .btnColor{

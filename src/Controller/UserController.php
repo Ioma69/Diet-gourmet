@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
 
-  
+
     #[Route('/user/new', name: 'user_new')]
     public function new(Request $request, UserPasswordHasherInterface $userPasswordHasher, ManagerRegistry $managerRegistry, RecipeRepository $recipeRepository, EntityManagerInterface $entityManager): Response
     {
@@ -35,10 +35,10 @@ class UserController extends AbstractController
             $allergenIds = $form->get('allergy')->getData();
             $dietIds = $form->get('type')->getData();
 
-            // Récupérer tous les utilisateurs
+            // Récupérer toutes les recettes
             $recipes = $recipeRepository->findAll();
 
-            // Filtrer les utilisateurs ayant des allergies et des types de régimes différents de ceux de l'utilisateur
+            // Filtrer les recettes ayant des allergies et des types de régimes différents de ceux de l'utilisateur
             $filteredRecipes = [];
             foreach ($recipes as $existingRecipe) {
                 $recipeAllergens = $existingRecipe->getAllergens();
@@ -85,7 +85,7 @@ class UserController extends AbstractController
             $user->getId();
 
             if (!empty($filteredRecipes)) {
-                // Associer tous les utilisateurs disponibles à l'utilisateur
+                // Associer toutes les recettes disponibles à l'utilisateur
                 foreach ($filteredRecipes as $existingRecipe) {
                     $user->addRecipe($existingRecipe);
                 }
@@ -93,7 +93,7 @@ class UserController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-            
+
 
             $entityManager = $managerRegistry->getManager();
 

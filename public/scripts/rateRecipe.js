@@ -100,12 +100,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // Récupére tous les éléments contenant les étoiles
 const starsContainers = document.querySelectorAll('.stars');
 
-// Parcour chaque conteneur d'étoiles
+// Parcours chaque conteneur d'étoiles
 starsContainers.forEach(starsContainer => {
   const averageRating = starsContainer.dataset.averageRating; // Récupére la note moyenne
 
 
-  // Parcour chaque étoile
+  // Parcours chaque étoile
   const stars = starsContainer.querySelectorAll('i');
   stars.forEach(star => {
     const value = star.dataset.value;

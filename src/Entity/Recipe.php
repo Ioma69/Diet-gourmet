@@ -58,7 +58,8 @@ class Recipe
     #[ORM\ManyToMany(targetEntity: Allergen::class, inversedBy: 'recipes')]
     private Collection $allergens;
 
-    #[ORM\OneToMany(targetEntity: UserRating::class, mappedBy: "recipe", cascade: ["persist", "remove"])]
+    #[ORM\OneToMany(targetEntity: UserRating::class, mappedBy: "recipe", 
+    cascade: ["persist", "remove"])]
     private Collection $userRatings;
 
     public function __construct()
