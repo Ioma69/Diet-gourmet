@@ -2,6 +2,8 @@
 
 # ECF entrainement Dietégourmet 2023 STUDI Sariel RAQUIN
 
+possibilité de consulter des recettes, noter des recettes (si connecté). également d'uploader, modifier, ou supprimer une recette si connecté en tant qu'admin
+
 ## Lien vers le trello : (https://trello.com/b/pGkhreB8/ecf-quai-antique-sariel-raquin](https://trello.com/invite/b/8flL1IsF/ATTI92e7724ebbaa22ef7ee5ded52ba70de777C252BF/ecf-entrainement-sandrine-coupart-sariel-raquin)
 
 ## Lien vers le site internet en ligne (https://dietegourmet.herokuapp.com/)
