@@ -39,13 +39,10 @@ p {
     border: 2px solid #ccc;
   }
 
-
-
-  .title:hover {
-    background-color: #e9ecef;
-    transform: scale(1.05);
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-  }
+.active {
+  color: #ddcce6;
+  text-decoration: underline;
+}
 
  
   .logo {
@@ -54,7 +51,7 @@ p {
   }
 
   .colorNav,.colorText{
-    color: #0C0920;
+    color: #000000;
   }
 
   .colorNav {
@@ -68,10 +65,20 @@ p {
   }
 
   .btnColor{
-    background-color: #bdb9b3;
+    background-color: #ddcce6;
   }
 
+  .linkStyle {
+    text-decoration: none;
+  }
   
+  .fa-regular, .fa-solid, .linkStyle{
+    color: #ddcce6;
+  }
+  .linkStyle:hover, .colorNav:hover {
+    text-decoration: underline;
+    color: #ddcce6;
+  }
 @media screen and (min-width: 320px) and (max-width : 600px) {
   .card-img-top {
     height: 200px;

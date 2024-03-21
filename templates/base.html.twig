@@ -41,8 +41,8 @@
                     </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item active d-flex align-items-center">
-                    <a class="nav-link colorNav" href="/">Accueil <span class="sr-only">(current)</span></a>
+                <li class="nav-item d-flex align-items-center">
+                    <a class="nav-link colorNav" href="/">Accueil</a>
                 </li>
                 <li class="nav-item d-flex align-items-center">
                     <a class="nav-link colorNav" href="/recipe">Recettes</a>
@@ -52,15 +52,19 @@
                 </li>
                 <li class="nav-item d-flex align-items-center">
                     <a href="https://www.instagram.com" target="_blank" >
-                    <img src="pictures/insta.png" class=" nav-link d-flex justify-content-center align-items-center" alt="Logo instagram"  style="width: 60px; height: 60px;"> 
-                </li>
-                <li class="nav-item d-flex align-items-center">
-                    <a href="https://www.facebook.com" target="_blank" >
-                    <img src="pictures/pinterest.png" class=" nav-link d-flex justify-content-center align-items-center" alt="Logo pinterest"  style="width: 60px; height: 60px;"> 
+                    <img src="pictures/insta.png" class=" nav-link d-flex justify-content-center align-items-center ms-lg-2" alt="Logo instagram"  style="width: 50px; height: 50px;"> 
                 </li>
                 <li class="nav-item d-flex align-items-center">
                     <a href="https://www.pinterest.com" target="_blank" >
-                    <img src="pictures/facebook.png" class=" nav-link d-flex justify-content-center align-items-center" alt="Logo facebook"  style="width: 60px; height: 60px;"> 
+                    <img src="pictures/pinterest.png" class=" nav-link d-flex justify-content-center align-items-center" alt="Logo pinterest"  style="width: 50px; height: 51px;"> 
+                </li>
+                <li class="nav-item d-flex align-items-center">
+                    <a href="https://www.facebook.com" target="_blank" >
+                    <img src="pictures/facebook.png" class=" nav-link d-flex justify-content-center align-items-center" alt="Logo facebook"  style="width: 50px; height: 50px;"> 
+                </li>
+                <li class="nav-item d-flex align-items-center">
+                    <a href="https://www.snapchat.com" target="_blank" >
+                    <img src="pictures/snapchat.png" class=" nav-link d-flex justify-content-center align-items-center" alt="Logo snapchat"  style="width: 50px; height: 50px;"> 
                 </li>
             </ul>
             <ul class="navbar-nav">
@@ -71,10 +75,10 @@
 									</a>
 									<ul class="dropdown-menu">
 										<li>
-											<a class="dropdown-item colorText" href="/user/new">Créer un patient</a>
+											<a class="dropdown-item colorText" href="/user/new">Créer un Patient</a>
 										</li>
 										<li>
-											<a class="dropdown-item colorText" href="/recipe/upload">Ajouter une recette</a>
+											<a class="dropdown-item colorText" href="/recipe/upload">Ajouter une Recette</a>
 										</li>
 									</ul>
 								</li>
@@ -86,13 +90,13 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li>
-                            <a class="dropdown-item btnColor" href="/logout">Se déconnecter</a>
+                            <a class="dropdown-item btnColor" href="/logout">Se Déconnecter</a>
                         </li>
                     </ul>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a href="/login" class="btn btn-secondary btnColor me-2">Se connecter</a>
+                    <a href="/login" class="btn btn-secondary btnColor me-2">Se Connecter</a>
                 </li>
                 {% endif %}
             </ul>
@@ -121,23 +125,23 @@
     <div class="container py-5">
         <div class="row">
            <div class="col-md-6">
-                    <h3 class="text-center mb-4">À propos de nous</h3>
-                    <p class="text-center">Consultez nos <a href="/rgpd">mentions légales et notre politique de confidentialité</a>.</p>
+                    <h3 class="text-center mb-4">À Propos de Nous</h3>
+                    <p class="text-center">Consultez nos <a class="linkStyle" href="/rgpd">Mentions Légales et notre Politique de Confidentialité</a>.</p>
                     <div class="d-flex justify-content-center">
                         <img src="pictures/signature.png" alt="signature" style="width: 240px; height: 150px;"> 
                     </div>
             </div>
 
             <div class="col-md-6">
-                <h3 class="text-center mb-4">Contactez-nous</h3>
+                <h3 class="text-center mb-4">Contactez-Nous</h3>
                 <p class="text-center">
-                    <i class="fa-regular fa-address-book me-1"></i> Adresse : 123 rue de l'Exemple, 75000 Paris
+                    <i class="fa-regular fa-address-book me-1"></i> Adresse : 123 rue de l'Abricot, 75000 Paris
                 </p>
                 <p class="text-center">
                     <i class="fa-solid fa-mobile-screen me-1"></i> Téléphone : 01 234 567 89
                 </p>
                 <p class="text-center">
-                    <i class="fa-regular fa-envelope me-1"></i> Email : contact@dietégourmet.com
+                    <i class="fa-regular fa-envelope me-1"></i> Email : Contact@Dietégourmet.com
                 </p>
             </div>
         </div>

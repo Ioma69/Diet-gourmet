@@ -16,6 +16,17 @@ const togglePassword2 = () => {
     eyeSlashIcon2.classList.contains("d-none") ? eyeSlashIcon2.classList.remove("d-none") : eyeSlashIcon2.classList.add("d-none")
 }
 
+const navLinkEls = document.querySelectorAll(".nav-link");
+const windowPathname = window.location.pathname;
+navLinkEls.forEach(navLinkEl => {
+    const navLinkPathname = new URL(navLinkEl.href).pathname;
+
+    if(windowPathname === navLinkPathname) {
+        navLinkEl.classList.add('active');
+    }
+    
+        
+    });
 
 
 
