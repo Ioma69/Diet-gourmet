@@ -44,10 +44,31 @@ p {
   text-decoration: underline;
 }
 
- 
+.navbar {
+  opacity: 90%;
+}
+
+.effect {
+  transition: transform .2s;
+}
+
+.effect:hover {
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2); 
+  transform: scale(1.2)
+}
+
   .logo {
     height: 110px;
     width: 110px;
+  }
+
+  .marginNavbar {
+    margin-top: 150px;
+  }
+
+  .borderCustom {
+    border-color: #ddcce6;
   }
 
   .colorNav,.colorText{

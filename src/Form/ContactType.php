@@ -19,34 +19,34 @@ class ContactType extends AbstractType
                 'label' => 'Votre nom',
                 'attr' => [
                     'placeholder' => 'Merci de saisir votre nom',
-                    'class' => 'colorText'
+                    'class' => 'colorText border-black'
                 ]
             ])
             ->add('prenom', TextType::class, [
                 'label' => 'Votre prénom',
                 'attr' => [
                     'placeholder' => 'Merci de saisir votre prénom',
-                    'class' => 'colorText'
+                    'class' => 'colorText border-black'
                 ]
             ])
             ->add('email', EmailType::class, [
                 'label' =>'Votre Email',
                 'attr' => [
                     'placeholder' => 'Merci de saisir votre adresse email',
-                    'class' => 'colorText'
+                    'class' => 'colorText border-black'
                 ]
             ])
             ->add('content', TextareaType::class, [
                 'label' => 'Votre message',
                 'attr' => [
                     'placeholder' => 'En quoi puis-je vous aidez ?',
-                    'class' => 'colorText'
+                    'class' => 'colorText border-black'
                 ]
             ])
             ->add('Submit', SubmitType::class, [
                 'label' => 'Envoyer',
                 'attr' => [
-                    'class' =>'btn-block btnColor colorText'
+                    'class' =>'btn btn-secondary btnColor colorText mt-2  border-black'
                 ]
             ])    
         ;

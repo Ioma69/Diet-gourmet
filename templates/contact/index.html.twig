@@ -5,21 +5,12 @@
 {% block body %}
 
     <section class="container mt-5 mb-5">
-    <h1 class="text-center colorText">Me contacter</h1>
+    <h1 class="text-center colorText marginNavbar mb-4">Me contacter</h1>
 
-    <p class="text-center fs-5 colorText">N'hesitez pas à prendre contact avec moi même pour plus de renseignements ou pour une prise de rendez vous. Je vous répondrais dans les meilleurs délais.</p>
+    <p class="text-center fs-5 colorText mb-4">N'hesitez pas à prendre contact avec moi même pour plus de renseignements ou pour une prise de rendez-vous, je vous répondrais dans les meilleurs délais.</p>
 
-    <div class="row">
-        <div class="col-md-8">{{ form(form) }}</div>
-        <div class="col-md-4">
-            <strong>Sandrine Coupart</strong>
-            <hr>
-            8 rue des Canuts <br/>
-            69000 Lyon <br/>
-            contact@sandrine-coupart.fr <br/>
-            06 00 00 00 00 <br/>
-        </div>
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-8 mt-3">{{ form(form) }}</div>
     </div>
-    </section>
-
+</section>
 {% endblock %}

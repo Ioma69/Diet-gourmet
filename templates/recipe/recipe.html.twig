@@ -2,12 +2,14 @@
 
 {% block body %}
 
-<div class="container mt-5 mb-5"> 
+<div class="container mb-5 marginNavbar"> 
   {% if is_granted('ROLE_USER') %}
-    <h1 class="text-center mb-5 colorText"> Retrouvez des Recettes Personnalisées par rapport à vos régimes et allergènes</h1>
+  <div class="d-flex flex-column align-items-center mt-5 mb-5" style="background-color: #ffffff; padding: 20px; border: 1px solid green; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+    <h1 class="text-center m-0 colorText"> Retrouvez des Recettes Personnalisées par rapport à vos régimes et allergènes</h1>
+    </div>
   {% else %}
-   <div class="d-flex flex-column align-items-center mt-3 mb-5" style="background-color: #ffffff; padding: 20px; border: 1px solid green; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius: 10px;">
-  <h1 class="text-center colorText">Retrouvez des recettes adaptées à tous les régimes</h1>
+   <div class="d-flex flex-column align-items-center mt-5 mb-5" style="background-color: #ffffff; padding: 20px; border: 1px solid green; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+  <h1 class="text-center colorText m-0">Retrouvez des recettes adaptées à tous les régimes</h1>
 </div>
 
 
@@ -20,45 +22,45 @@
         <div class="card shadow mb-4">
           <img src="{{ asset('uploads/' ~ recipe.image) }}" class="card-img-top" alt="{{ recipe.name }}" width="634" height="475">
           <div class="card-body">
-            <h5 class="card-title">{{ recipe.name }}</h5>
+            <h5 class="card-title mb-3 text-center text-decoration-underline">{{ recipe.name }}</h5>
             
             <div class="detail">
               <h6 class="fw-bold colorText">Nom :</h6>
-              <p class="card-text mb-2">{{ recipe.name }}</p>
+              <p class="card-text mb-3">{{ recipe.name }}</p>
             </div>
             
             <div class="detail">
               <h6 class="fw-bold colorText">Description :</h6>
-              <p class="card-text mb-2">{{ recipe.description }}</p>
+              <p class="card-text mb-3">{{ recipe.description }}</p>
             </div>
             
             <div class="detail">
               <h6 class="fw-bold colorText">Temps de préparation :</h6>
-              <p class="card-text mb-2">{{ recipe.preparationtime }} minutes</p>
+              <p class="card-text mb-3">{{ recipe.preparationtime }} minutes</p>
             </div>
             
             <div class="detail">
               <h6 class="fw-bold colorText">Temps de cuisson :</h6>
-              <p class="card-text mb-2">{{ recipe.cookingtime }} minutes</p>
+              <p class="card-text mb-3">{{ recipe.cookingtime }} minutes</p>
             </div>
             
             <div class="detail">
               <h6 class="fw-bold colorText">Ingrédients :</h6>
-              <p class="card-text mb-2">{{ recipe.ingredients }}</p>
+              <p class="card-text mb-3">{{ recipe.ingredients }}</p>
             </div>
             
             <div class="detail">
               <h6 class="fw-bold colorText">Étapes de la recette :</h6>
-              <p class="card-text mb-2">{{ recipe.preparation }}</p>
+              <p class="card-text mb-3">{{ recipe.preparation }}</p>
             </div>
             
             {% if is_granted('ROLE_ADMIN') %}
             <div class="card-footer d-flex justify-content-center mt-4">
-              <a href="{{ path('deleterecipe', {'id': recipe.id}) }}" class="btn btn-sm me-1 adminButton">
+              <a href="{{ path('deleterecipe', {'id': recipe.id}) }}" class="btn btn-secondary text-black btnColor btn-sm me-1">
                 <i class="fas fa-trash colorText"></i>
                 Supprimer
               </a>
-              <a href="{{ path('editrecipe', {'id': recipe.id}) }}" class="btn btn-sm adminButton">
+              <a href="{{ path('editrecipe', {'id': recipe.id}) }}" class="btn btn-secondary text-black btnColor btn-sm">
                 <i class="fas fa-edit colorText"></i>
                 Modifier
               </a>

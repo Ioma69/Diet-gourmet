@@ -19,10 +19,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="pictures/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="pictures/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="pictures/favicon-16x16.png">
-    <link rel="manifest" href="pictures/site.webmanifest">
-    <link rel="mask-icon" href="pictures/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('pictures/favicon-32x32.png') }}" >
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('pictures/favicon-16x16.png') }}" >
+    <link rel="manifest" href="{{ asset('pictures/site.webmanifest') }}"> 
+    <link rel="mask-icon" href= "{{ asset('pictures/safari-pinned-tab.svg') }}" color="#5bbad5">
     <link rel="stylesheet" href="{{ asset('styles/style.css') }}" type="text/css">
     {% endblock %}
 
@@ -31,8 +31,8 @@
 <body>
 
 {% block header %}
-<header>
-    <nav class="navbar navbar-expand-lg navbarBg ps-2">
+<header> 
+    <nav class="navbar navbar-expand-lg navbarBg ps-2 fixed-top">
         <a class="navbar-brand" href="/">
             <img src="{{ asset('pictures/logo.png') }}" alt="Dietégourmet" class="logo">
         </a>
@@ -52,19 +52,19 @@
                 </li>
                 <li class="nav-item d-flex align-items-center">
                     <a href="https://www.instagram.com" target="_blank" >
-                    <img src="pictures/insta.png" class=" nav-link d-flex justify-content-center align-items-center ms-lg-2" alt="Logo instagram"  style="width: 50px; height: 50px;"> 
+                    <img src="{{ asset('pictures/insta.png') }}" class="effect nav-link d-flex justify-content-center align-items-center ms-lg-2" alt="Logo instagram"  style="width: 50px; height: 50px;"> 
                 </li>
                 <li class="nav-item d-flex align-items-center">
                     <a href="https://www.pinterest.com" target="_blank" >
-                    <img src="pictures/pinterest.png" class=" nav-link d-flex justify-content-center align-items-center" alt="Logo pinterest"  style="width: 50px; height: 51px;"> 
+                    <img src="{{ asset('pictures/pinterest.png') }}" class="effect nav-link d-flex justify-content-center align-items-center" alt="Logo pinterest"  style="width: 50px; height: 51px;"> 
                 </li>
                 <li class="nav-item d-flex align-items-center">
                     <a href="https://www.facebook.com" target="_blank" >
-                    <img src="pictures/facebook.png" class=" nav-link d-flex justify-content-center align-items-center" alt="Logo facebook"  style="width: 50px; height: 50px;"> 
+                    <img src="{{ asset('pictures/facebook.png') }}" class="effect nav-link d-flex justify-content-center align-items-center" alt="Logo facebook"  style="width: 50px; height: 50px;"> 
                 </li>
                 <li class="nav-item d-flex align-items-center">
                     <a href="https://www.snapchat.com" target="_blank" >
-                    <img src="pictures/snapchat.png" class=" nav-link d-flex justify-content-center align-items-center" alt="Logo snapchat"  style="width: 50px; height: 50px;"> 
+                    <img src="{{ asset('pictures/snapchat.png') }}" class="effect nav-link d-flex justify-content-center align-items-center" alt="Logo snapchat"  style="width: 50px; height: 50px;"> 
                 </li>
             </ul>
             <ul class="navbar-nav">
@@ -90,7 +90,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li>
-                            <a class="dropdown-item btnColor" href="/logout">Se Déconnecter</a>
+                            <a class="dropdown-item" href="/logout">Se Déconnecter</a>
                         </li>
                     </ul>
                 </li>
@@ -128,7 +128,7 @@
                     <h3 class="text-center mb-4">À Propos de Nous</h3>
                     <p class="text-center">Consultez nos <a class="linkStyle" href="/rgpd">Mentions Légales et notre Politique de Confidentialité</a>.</p>
                     <div class="d-flex justify-content-center">
-                        <img src="pictures/signature.png" alt="signature" style="width: 240px; height: 150px;"> 
+                        <img src="{{ asset('pictures/signature.png') }}"  alt="signature" style="width: 240px; height: 150px;"> 
                     </div>
             </div>
 
