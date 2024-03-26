@@ -100,6 +100,44 @@ p {
     text-decoration: underline;
     color: #ddcce6;
   }
+
+  .customBorder{
+    
+    border: 15px solid rgb(175, 248, 203);
+  }
+
+  .customBorder2{
+    border: 15px solid rgb(243, 248, 175);
+  }
+
+  .customBorder3{
+    border: 15px solid rgb(255, 76, 76);
+  }
+
+  .customBorder4{
+    border: 15px solid rgb(175, 213, 248);
+  }
+
+  .customBorder5{
+    border: 15px solid rgb(243, 248, 175);
+  }
+  .gradient-background {
+    background: linear-gradient(199deg,#ddcce6,#926ea3);
+    background-size: 120% 120%;
+    animation: gradient-animation 6s ease infinite;
+  }
+  
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 @media screen and (min-width: 320px) and (max-width : 600px) {
   .card-img-top {
     height: 200px;
