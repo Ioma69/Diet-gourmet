@@ -32,7 +32,7 @@ class RecipeType extends AbstractType
         $builder
 
             ->add("name", TextType::class, [
-                "label" => "nom",
+                "label" => "Nom",
                 "required" => true,
                 "constraints" => [
                     new NotBlank(["message" => "Le nom ne peut pas être vide !"]),
@@ -56,7 +56,7 @@ class RecipeType extends AbstractType
             )
 
             ->add("image", FileType::class, [
-                "label" => "L'image",
+                "label" => "Image",
                 'mapped' => false,
                 "required" => false,
                 'constraints' => [
@@ -110,7 +110,7 @@ class RecipeType extends AbstractType
             ->add(
                 "ingredients", TextType::class,
                 [
-                    "label" => "ingredients",
+                    "label" => "Ingredients",
                     "required" => true,
                     'constraints'
                     => [
@@ -125,7 +125,7 @@ class RecipeType extends AbstractType
             ->add(
                 "preparation", TextType::class,
                 [
-                    "label" => "preparation",
+                    "label" => "Preparation",
                     "required" => true,
                     'constraints'
                     => [

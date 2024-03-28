@@ -18,11 +18,11 @@
   
   {% for recipe in recipes %}
     <div class="row justify-content-center mb-3 mt-5">
-      <div class="col-10 col-md-8 col-lg-6 mt-5">
+      <div class="col-10 col-md-8 col-lg-6 mt-5 mb-5">
         <div class="card shadow mb-4">
           <img src="{{ asset('uploads/' ~ recipe.image) }}" class="card-img-top" alt="{{ recipe.name }}" width="634" height="475">
           <div class="card-body">
-            <h5 class="card-title mb-3 text-center text-decoration-underline">{{ recipe.name }}</h5>
+            <h5 class="card-title mb-4 mt-3 text-center fs-3">{{ recipe.name }}</h5>
             
             <div class="detail">
               <h6 class="fw-bold colorText">Nom :</h6>
@@ -56,12 +56,12 @@
             
             {% if is_granted('ROLE_ADMIN') %}
             <div class="card-footer d-flex justify-content-center mt-4">
-              <a href="{{ path('deleterecipe', {'id': recipe.id}) }}" class="btn btn-secondary text-black btnColor btn-sm me-1">
-                <i class="fas fa-trash colorText"></i>
+              <a href="{{ path('deleterecipe', {'id': recipe.id}) }}" class="btn btn-secondary colorText btnColor btn-sm me-1">
+                <i class="fas fa-trash"></i>
                 Supprimer
               </a>
-              <a href="{{ path('editrecipe', {'id': recipe.id}) }}" class="btn btn-secondary text-black btnColor btn-sm">
-                <i class="fas fa-edit colorText"></i>
+              <a href="{{ path('editrecipe', {'id': recipe.id}) }}" class="btn btn-secondary colorText btnColor btn-sm">
+                <i class="fas fa-edit"></i>
                 Modifier
               </a>
             </div>

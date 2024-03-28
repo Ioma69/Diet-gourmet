@@ -1,97 +1,114 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Dietégourmet{% endblock %}
+{% block title %}Dietégourmet
+{% endblock %}
 
 {% block body %}
-  <section class="my-5 mb-5">
-    <div class="container marginNavbar">
-      <div class="row">
-        <div class="col-lg-6 d-flex align-items-center">
-          <div class="text-center">
-            <h1 class="mb-4 title">Une vie saine pour vivre mieux et plus longtemps</h1>
-            <p class="lead">Je suis une nutritionniste passionnée, prête à vous accompagner dans votre parcours vers une meilleure santé et un bien-être optimal.</p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <img src="{{ asset('pictures/diet4.png') }}" class="img-fluid rounded shadow img-small mb-5 customBorder2" alt="diététique"  >
-        </div>
-      </div>
-    </div>
-  </section>
+	<section class="my-5 mb-5">
+		<div class="container marginNavbar">
+			<div class="row">
+				<div class="col-lg-6 d-flex align-items-center">
+					<div class="text-center">
+						<h1 class="mb-4 title">Une vie saine pour vivre
+							<span class="colorY">mieux</span>
+							<span class="colorY">et</span> <span class="colorY">plus</span>
+							<span class="colorY">longtemps</span>
+						</h1>
+						<p class="lead">Je suis une nutritionniste passionnée, prête à vous accompagner dans votre parcours vers une meilleure santé et un bien-être optimal.</p>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<img src="{{ asset('pictures/diet4.png') }}" class="img-fluid rounded shadow img-small mb-5 customBorder2" alt="diététique">
+				</div>
+			</div>
+		</div>
+	</section>
 
-  <section class="my-5">
-    <div class="container">
-      <div class="row">
-        
-        <div class="col-lg-6 d-flex align-items-center justify-content-center">
-          <img src="{{ asset('pictures/diet3.png') }}" class="img-fluid rounded shadow img-small customBorder" alt="diététique">
-        </div>
-        <div class="col-lg-6 d-flex align-items-center">
-          <div class="text-center">
-            <h1 class="mt-4 mb-4 title">Fixons ensemble des objectifs réalisables rapidement</h1>
-            <p class="lead">Je vous accueille à Lyon, dans mon cabinet diététique situé au sein de la Maison de Santé, où nous travaillons en équipe pluridisciplinaire médicale.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+	<section class="my-5">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-lg-6 d-flex align-items-center justify-content-center">
+					<img src="{{ asset('pictures/diet3.png') }}" class="img-fluid rounded shadow img-small customBorder" alt="diététique">
+				</div>
+				<div class="col-lg-6 d-flex align-items-center">
+					<div class="text-center">
+						<h1 class="mt-4 mb-4 title">Fixons ensemble des
+							<span class="colorG">objectifs</span>
+							<span class="colorG">réalisables</span>
+							<span class="colorG">rapidement</span>
+						</h1>
+						<p class="lead">Je vous accueille à Lyon, dans mon cabinet diététique situé au sein de la Maison de Santé, où nous travaillons en équipe pluridisciplinaire médicale.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 
-<div class="lines marginHr mb-4">
-  <div class="circle"></div>
-</div>
+	<div class="lines marginHr mb-4">
+		<div class="circle"></div>
+	</div>
 
 
+	<section class="my-5 pb-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="mb-5">
+						<div class="card-body">
+							<h2 class="text-center mb-5 mt-5 pb-3" style="letter-spacing: 2.5px; font-weight:bold; font-size:44px">♥ Mes Services ♥</h2>
+						</div>
+					</div>
+				</div>
+			</div>
 
-<section class="my-5 pb-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="mb-5">
-          <div class="card-body">
-            <h2 class="text-center mb-5 mt-5" style="letter-spacing: 2.5px; font-weight:bold; font-size:44px">♥ Mes Services ♥</h2>
-          </div>
-        </div>
-      </div>
-    </div>
+			<div class="row mt-5">
+				<div class="col-lg-6 d-flex align-items-center justify-content-center">
+					<img src="{{ asset('pictures/diet.png') }}" class="img-fluid rounded shadow img-small customBorder3" alt="diététique">
+				</div>
+				<div class="col-lg-6 d-flex align-items-center">
+					<div class="text-center">
+						<h1 class="mt-4 mb-4 title">Dressons ensemble votre
+							<span class="colorR">bilan</span>
+							<span class="colorR">nutritionnel</span>
+							<span class="colorR">personnalisé</span>
+						</h1>
+						<p class="lead">Réservez dès maintenant votre consultation pour obtenir votre bilan nutritionnel complet 
+							            et prendre en charge votre santé dès aujourd'hui.</p>
+					</div>
+				</div>
+			</div>
 
-<div class="row mt-5">
-  <div class="col-lg-6 d-flex align-items-center justify-content-center">
-    <img src="{{ asset('pictures/diet.png') }}" class="img-fluid rounded shadow img-small customBorder3" alt="diététique">
-  </div>
-  <div class="col-lg-6 d-flex align-items-center">
-          <div class="text-center">
-            <h1 class="mt-4 mb-4 title">Dressons ensemble votre bilan nutritionnel personnalisé</h1>
-            <p class="lead">Réservez dès maintenant votre consultation pour obtenir votre bilan nutritionnel complet 
-            et prendre en charge votre santé dès aujourd'hui.</p>
-          </div>
-        </div>
-</div>
+			<div class="row mt-5">
+				<div class="col-lg-6 d-flex align-items-center">
+					<div class="text-center">
+						<h1 class="mt-4 mb-4 title">Apprenons ensemble les <span class="colorB">bases</span> <span class="colorB">d'une</span> <span class="colorB">cuisine</span> <span class="colorB">saine</span></h1>
+						<p class="lead">Nos ateliers en groupe vous permettront de découvrir des recettes adaptées à vos besoins spécifiques.</p>
+					</div>
+				</div>
+				<div class="col-lg-6 d-flex align-items-center justify-content-center">
+					<img src="{{ asset('pictures/diet2.png') }}" class="img-fluid rounded shadow img-small customBorder4" alt="diététique">
+				</div>
+			</div>
 
- <div class="row mt-5">  
- <div class="col-lg-6 d-flex align-items-center">
-          <div class="text-center">
-            <h1 class="mt-4 mb-4 title">Apprenons ensemble les bases d'une cuisine saine</h1>
-            <p class="lead">Nos ateliers en groupe vous permettront de découvrir des recettes adaptées à vos besoins spécifiques.</p>
-          </div>
-        </div>
-  <div class="col-lg-6 d-flex align-items-center justify-content-center">
-    <img src="{{ asset('pictures/diet2.png') }}" class="img-fluid rounded shadow img-small customBorder4" alt="diététique">
-  </div>
-</div>
-
-<div class="row mt-5 mb-5">
-  <div class="col-lg-6 d-flex align-items-center justify-content-center">
-    <img src="{{ asset('pictures/diet6.png') }}" class="img-fluid rounded shadow img-small customBorder5" alt="diététique">
-  </div>
-  <div class="col-lg-6 d-flex align-items-center">
-          <div class="text-center">
-            <h1 class="mt-4 mb-4 title">Inscrivez-vous à mon programme de suivi en ligne</h1>
-            <p class="lead">Ce programme vous permettra de bénéficier d'un accompagnement continu, échanger avec d'autres participants
-             pour vous soutenir mutuellement. </p>
-          </div>
-        </div>
-</div>
-</div>
-</section>
+			<div class="row mt-5 mb-5">
+				<div class="col-lg-6 d-flex align-items-center justify-content-center">
+					<img src="{{ asset('pictures/diet6.png') }}" class="img-fluid rounded shadow img-small customBorder5" alt="diététique">
+				</div>
+				<div class="col-lg-6 d-flex align-items-center">
+					<div class="text-center">
+						<h1 class="mt-4 mb-4 title">Inscrivez-vous à mon
+							<span class="colorY">programme</span>
+							<span class="colorY">de</span>
+							<span class="colorY">suivi</span>
+							<span class="colorY">en ligne</span></h1>
+						<p class="lead">Ce programme vous permettra de bénéficier d'un accompagnement continu, échanger avec d'autres participants
+							             pour vous soutenir mutuellement.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}

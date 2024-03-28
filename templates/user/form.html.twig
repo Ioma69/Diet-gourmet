@@ -5,34 +5,34 @@
 
 {% if ( is_granted('ROLE_ADMIN') ) %}
 	<section class="container rounded mb-5 mt-5">
-		<div class="card shadow p-3 mb-5 customForm marginNavbar">
+		<div class="p-3 mb-5 customForm marginNavbar">
 			<h2 class="text-center mb-4 titleForm text-decoration-underline">Créer un Patient</h2>
 			{{ form_start(form, {'attr': {'class': 'row g-3'}}) }}
 			<div class="col-md-12">
 				<div class="mb-3 form-group">
 					{{ form_label(form.firstname) }}
-					{{ form_widget(form.firstname, {'attr': {'class': 'form-control borderCustom'}}) }}
+					{{ form_widget(form.firstname, {'attr': {'class': 'form-control border-black'}}) }}
 					{{ form_errors(form.firstname) }}
 				</div>
 				<div class="mb-3 form-group">
 					{{ form_label(form.name) }}
-					{{ form_widget(form.name, {'attr': {'class': 'form-control borderCustom'}}) }}
+					{{ form_widget(form.name, {'attr': {'class': 'form-control border-black'}}) }}
 					{{ form_errors(form.name) }}
 				</div>
 				<div class="mb-3 form-group">
 					{{ form_label(form.phone) }}
-					{{ form_widget(form.phone, {'attr': {'class': 'form-control borderCustom'}}) }}
+					{{ form_widget(form.phone, {'attr': {'class': 'form-control border-black'}}) }}
 					{{ form_errors(form.phone) }}
 				</div>
 				<div class="mb-3 form-group">
 					{{ form_label(form.email) }}
-					{{ form_widget(form.email, {'attr': {'class': 'form-control borderCustom'}}) }}
+					{{ form_widget(form.email, {'attr': {'class': 'form-control border-black'}}) }}
 					{{ form_errors(form.email) }}
 				</div>
 				<div class="mb-3 form-group">
 					{{ form_label(form.password) }}
 					<div class="input-group mb-3">
-						{{ form_widget(form.password, {'attr': {'class': 'form-control borderCustom' }}) }}
+						{{ form_widget(form.password, {'attr': {'class': 'form-control border-black' }}) }}
 						<span role="button" class="input-group-text" onclick="togglePassword()">
 							<i class="bi bi-eye" id="eye"></i>
 							<i class="bi bi-eye-slash d-none" id="eye-slash"></i>
@@ -43,7 +43,7 @@
 				<div class="mb-3">
 					{{ form_label(form.confirm) }}
 					<div class="input-group mb-3">
-						{{ form_widget(form.confirm, {'attr': {'class': 'form-control borderCustom'}}) }}
+						{{ form_widget(form.confirm, {'attr': {'class': 'form-control border-black'}}) }}
 						<span role="button" class="input-group-text" onclick="togglePassword2()">
 							<i class="bi bi-eye" id="eye2"></i>
 							<i class="bi bi-eye-slash d-none" id="eye-slash2"></i>
@@ -55,12 +55,12 @@
 
 				<div class="mb-3 form-group">
 					{{ form_label(form.allergy) }}
-					{{ form_widget(form.allergy, {'attr': {'class': 'form-control borderCustom'}}) }}
+					{{ form_widget(form.allergy, {'attr': {'class': 'form-control border-black'}}) }}
 					{{ form_errors(form.allergy) }}
 				</div>
 				<div class="mb-3 form-group">
 					{{ form_label(form.type) }}
-					{{ form_widget(form.type, {'attr': {'class': 'form-control borderCustom'}}) }}
+					{{ form_widget(form.type, {'attr': {'class': 'form-control border-black'}}) }}
 					{{ form_errors(form.type) }}
 				</div>
 
@@ -68,7 +68,7 @@
 			</div>
 			<div class="col-12">
 				{{ form_rest(form) }}
-				<button class="btn btn-secondary text-black btnColor me-2 btnColor" type="submit">Créer un patient</button>
+				<button class="btn btn-secondary colorText btnColor me-2 btnColor" type="submit">Créer un patient</button>
 			</div>
 			{{ form_end(form) }}
 		</div>
