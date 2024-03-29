@@ -17,41 +17,80 @@
   {% endif %}
   
 
-<div class="row justify-content-center mb-3 mt-5">
+<div class="row justify-content-center mb-5 mt-5">
       <div class="col-10 col-md-8 col-lg-6 mt-5 mb-5">
         <div class="card shadow mb-4">
-          <img src="{{ asset('pictures/diet2.png') }}" class="card-img-top" alt="repas" width="634" height="475">
+          <img src="{{ asset('pictures/bowl.jpg') }}" class="card-img-top" alt="repas" width="604" height="455">
           <div class="card-body">
-            <h5 class="card-title mb-4 mt-3 text-center fs-3">TEST</h5>
-            
-            <div class="detail">
-              <h6 class="fw-bold colorText">Nom :</h6>
-              <p class="card-text mb-3">test</p>
-            </div>
+            <h5 class="card-title mb-4 mt-3 text-center fs-3">Bowl Cake</h5>
             
             <div class="detail">
               <h6 class="fw-bold colorText">Description :</h6>
-              <p class="card-text mb-3">test</p>
+              <p class="card-text mb-3">Ce délicieux bol contient une combinaison de fruits frais, de flocons d'avoine riches en fibres, 
+              de graines de chia pleines d'antioxydants et de crème de soja pour une touche de douceur. </p>
             </div>
             
             <div class="detail">
               <h6 class="fw-bold colorText">Temps de préparation :</h6>
-              <p class="card-text mb-3">test minutes</p>
+              <p class="card-text mb-3">5 minutes</p>
             </div>
             
             <div class="detail">
               <h6 class="fw-bold colorText">Temps de cuisson :</h6>
-              <p class="card-text mb-3">test minutes</p>
+              <p class="card-text mb-3">2 minutes</p>
             </div>
             
             <div class="detail">
               <h6 class="fw-bold colorText">Ingrédients :</h6>
-              <p class="card-text mb-3">test</p>
+              <p class="card-text mb-3">fraises, framboises, creme de soja, graines de chia, mures, flocons d'avoine</p>
             </div>
             
             <div class="detail">
               <h6 class="fw-bold colorText">Étapes de la recette :</h6>
-              <p class="card-text mb-3">test</p>
+              <p class="card-text mb-3">Mixez les fruits avec la creme de soja, puis rajouter les flocons d'avoine ainsi que les graines de chia. 
+              Pour finir, faites chauffer au micro-onde pendant 2 minutes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mb-5 mt-5">
+      <div class="col-10 col-md-8 col-lg-6 mt-5 mb-5">
+        <div class="card shadow mb-4">
+          <img src="{{ asset('pictures/clafoutis.jpeg') }}" class="card-img-top" alt="repas" width="604" height="455">
+          <div class="card-body">
+            <h5 class="card-title mb-4 mt-3 text-center fs-3">Clafoutis</h5>
+            
+            <div class="detail">
+              <h6 class="fw-bold colorText">Description :</h6>
+              <p class="card-text mb-3">Cette délicieuse pâtisserie se caractérise par une texture tendre et crémeuse, 
+              avec une couche légèrement croustillante sur le dessus. </p>
+            </div>
+            
+            <div class="detail">
+              <h6 class="fw-bold colorText">Temps de préparation :</h6>
+              <p class="card-text mb-3">10 minutes</p>
+            </div>
+            
+            <div class="detail">
+              <h6 class="fw-bold colorText">Temps de cuisson :</h6>
+              <p class="card-text mb-3">45 minutes</p>
+            </div>
+            
+            <div class="detail">
+              <h6 class="fw-bold colorText">Ingrédients :</h6>
+              <p class="card-text mb-3">Groseilles (ou tout autre fruit de saison), Œufs, Sucre, Farine, Lait, Extrait de vanille,Beurre</p>
+            </div>
+            
+            <div class="detail">
+              <h6 class="fw-bold colorText">Étapes de la recette :</h6>
+              <p class="card-text mb-3">Préchauffez votre four à 180°C (350°F), beurrez un moule à gratin ou un plat à tarte puis
+                disposez les groseilles uniformément dans le fond du moule. Dans un bol, fouettez les œufs avec le sucre 
+                jusqu'à ce que le mélange soit léger et mousseux. Ajoutez la farine, puis versez lentement le lait en remuant constamment pour éviter les grumeaux.
+                Incorporez l'extrait de vanille à la préparation, versez délicatement le mélange sur les groseilles dans le moule. 
+                Enfournez et faites cuire pendant environ 45 minutes, 
+                Laissez refroidir légèrement avant de servir, saupoudrez éventuellement de sucre glace et dégustez !</p>
             </div>
           </div>
         </div>
@@ -59,17 +98,12 @@
     </div>
 
   {% for recipe in recipes %}
-    <div class="row justify-content-center mb-3 mt-5">
+    <div class="row justify-content-center mb-5 mt-5">
       <div class="col-10 col-md-8 col-lg-6 mt-5 mb-5">
         <div class="card shadow mb-4">
           <img src="{{ asset('uploads/' ~ recipe.image) }}" class="card-img-top" alt="{{ recipe.name }}" width="634" height="475">
           <div class="card-body">
             <h5 class="card-title mb-4 mt-3 text-center fs-3">{{ recipe.name }}</h5>
-            
-            <div class="detail">
-              <h6 class="fw-bold colorText">Nom :</h6>
-              <p class="card-text mb-3">{{ recipe.name }}</p>
-            </div>
             
             <div class="detail">
               <h6 class="fw-bold colorText">Description :</h6>
