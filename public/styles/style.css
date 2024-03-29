@@ -51,12 +51,29 @@ p {
   transition: transform 0.2s;
 }
 
+.effect2 {
+  transition: all 0.5s ease-in-out;
+}
+
+.effect3 {
+   transition: all 0.5s ease-in-out;
+ }
+
 .effect:hover {
   -ms-transform: scale(1.2);
   -webkit-transform: scale(1.2);
   transform: scale(1.2);
 }
 
+.effect2:hover {
+  transform-origin: left right;
+  transform: rotate(4deg) scale(1.05) translateX(30px);
+}
+
+.effect3:hover {
+  transform-origin: right top;
+  transform: rotate(4deg) scale(1.05) translateX(30px);
+}
 .logo {
   height: 110px;
   width: 110px;
